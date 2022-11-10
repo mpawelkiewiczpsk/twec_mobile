@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="30px" viewBox="0 0 100 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>TWEC2 horizontal white</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="125.691377%" x2="49.9832757%" y2="-38.8539466%" id="linearGradient-1">
+            <stop stop-color="#9DCCF4" offset="0%"></stop>
+            <stop stop-color="#E0EFFC" offset="57%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="92.3916738%" y1="269.05206%" x2="92.341379%" y2="0.000847888757%" id="linearGradient-2">
+            <stop stop-color="#9DCCF4" offset="0%"></stop>
+            <stop stop-color="#E0EFFC" offset="57%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="92.2939972%" y1="269.05206%" x2="92.344292%" y2="0.000847888757%" id="linearGradient-3">
+            <stop stop-color="#9DCCF4" offset="0%"></stop>
+            <stop stop-color="#E0EFFC" offset="57%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="467.191347%" x2="49.8996093%" y2="1.00568994%" id="linearGradient-4">
+            <stop stop-color="#9DCCF4" offset="0%"></stop>
+            <stop stop-color="#E0EFFC" offset="57%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="182.164012%" y1="100%" x2="182.164012%" y2="-58.345769%" id="linearGradient-5">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#86ACF2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="welcome1" transform="translate(-137.000000, -24.000000)">
+            <g id="TWEC2-horizontal-white" transform="translate(137.000000, 24.000000)">
+                <g id="Group" transform="translate(29.509699, 6.955588)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(0.000000, 0.223809)" id="Path">
+                        <polygon points="4.88664243 16.6823116 4.88664243 3.7013613 0.160551417 3.7013613 0.160551417 0.142790453 13.3438579 0.142790453 13.3438579 3.7013613 8.64037978 3.7013613 8.64037978 16.6823116"></polygon>
+                    </g>
+                    <polygon id="Path" points="23.2709103 16.906121 19.9015919 16.906121 14.429276 0.36659994 18.5448193 0.36659994 21.6653962 11.1318363 25.2608434 0.36659994 27.7708726 0.36659994 31.4115456 11.1318363 34.4868967 0.36659994 38.60244 0.36659994 33.152737 16.906121 29.7834185 16.906121 26.5271644 6.61088463"></polygon>
+                    <polygon id="Path" points="52.1249397 16.906121 40.4793087 16.906121 40.4793087 0.36659994 52.1475525 0.36659994 52.1475525 3.81326604 44.2330461 3.81326604 44.2330461 6.87945602 51.5596178 6.87945602 51.5596178 10.3037412 44.2330461 10.3037412 44.2330461 13.4594549 52.1249397 13.4594549"></polygon>
+                    <path d="M62.5494753,17.1523115 C60.1072848,17.1523115 58.0653421,16.3689783 56.421386,14.8023119 C54.77743,13.2206502 53.9565826,11.1839839 53.9565826,8.69231286 C53.9565826,6.18564661 54.793259,4.12659932 56.4666118,2.51517102 C58.1557936,0.888747474 60.1977363,0.0756476067 62.5947011,0.0756476067 C64.0713219,0.0756476067 65.4439234,0.377790414 66.7102444,0.98207603 C67.9765655,1.58636165 68.9941449,2.40326627 69.7629827,3.43278991 L67.3207921,5.89469427 C66.0544711,4.38756119 64.5461922,3.63421845 62.798217,3.63421845 C61.4120477,3.63421845 60.2361782,4.11160409 59.2706084,5.06659917 C58.3050386,6.02137044 57.8233843,7.22255596 57.8233843,8.66993191 C57.8233843,10.0873174 58.2982547,11.266122 59.2479955,12.2061218 C60.1977363,13.1461217 61.3736058,13.6161216 62.7756041,13.6161216 C64.5846341,13.6161216 66.1290935,12.8551693 67.4112436,11.3332648 L69.9212728,13.6608835 C69.136606,14.7201738 68.0896299,15.5668451 66.7780831,16.2011212 C65.4665363,16.8351734 64.0577541,17.1523115 62.5494753,17.1523115 Z" id="Path"></path>
+                </g>
+                <g id="Group" transform="translate(0.252409, 0.136179)">
+                    <g transform="translate(0.257493, 0.225457)">
+                        <g id="Path">
+                            <g transform="translate(6.712399, 8.095179)" fill="url(#linearGradient-1)">
+                                <polygon points="4.36414231 20.7485307 4.36414231 12.6199642 5.5312337 12.6199642 5.5312337 20.7485307 9.87480575 20.7485307 9.87480575 0.0843315217 0.0205702565 0.0843315217 0.0205702565 20.7485307"></polygon>
+                            </g>
+                            <g transform="translate(0.001949, 0.095431)" fill="url(#linearGradient-2)">
+                                <polygon points="4.37172082 0.0546485923 0.00757851554 0.0546485923 6.72755651 12.6924034 11.0916988 12.6924034"></polygon>
+                            </g>
+                            <g transform="translate(17.728313, 6.471101) scale(-1, 1) translate(-17.728313, -6.471101) translate(12.152691, 0.095431)" fill="url(#linearGradient-3)">
+                                <polygon points="4.37172082 0.0546485923 0.00757851554 0.0546485923 6.72755651 12.6924034 11.0916988 12.6924034"></polygon>
+                            </g>
+                        </g>
+                        <g transform="translate(8.031473, 0.123131)" fill="url(#linearGradient-4)" id="Oval">
+                            <ellipse cx="3.62794366" cy="3.60037785" rx="3.60943042" ry="3.57241063"></ellipse>
+                        </g>
+                    </g>
+                    <g transform="translate(0.074689, 16.241565)" fill="url(#linearGradient-5)" id="Path">
+                        <g transform="translate(3.409518, 6.506168) scale(-1, 1) rotate(-180.000000) translate(-3.409518, -6.506168) translate(0.170228, 0.130502)">
+                            <polygon points="3.41345435 0.0546485728 0.0218757242 0.0546485728 3.02221544 12.6923989 6.41379406 12.6923989"></polygon>
+                        </g>
+                        <g transform="translate(20.262149, 6.506168) rotate(180.000000) translate(-20.262149, -6.506168) translate(17.022859, 0.130502)">
+                            <polygon points="3.41345435 0.0546485728 0.0218757242 0.0546485728 3.02221544 12.6923989 6.41379406 12.6923989"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
