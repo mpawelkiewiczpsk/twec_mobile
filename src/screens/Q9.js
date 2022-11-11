@@ -29,7 +29,7 @@ export default function Q9({ navigation }) {
 
     useEffect(() => {
 
-        setIsDisabled(false)
+        setIsDisabled(answers.gammaRight?.error || answers.gammaLeft?.error || answers.alfaOO?.error || answers.alfaOZ?.error || answers.alfaDyn?.error)
 
     }, [answers])
 
