@@ -45,7 +45,8 @@ export default function Q5({ navigation }) {
     return (
         <KeyboardAvoidingView
             style={{flex: 1}}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={Platform.select({ios: 0, android: 500})}
+            behavior= {(Platform.OS === 'ios') ? "padding" : null}
         >
         <SafeAreaView style={styles.container}>
             {answers.gmfm?.error && displayAlert === 1 &&
@@ -55,7 +56,7 @@ export default function Q5({ navigation }) {
             {answers.test6m?.error && displayAlert === 3 &&
                 <OverlayAlert onClick={() => hideAlert()} arrowLeft="true" style={{top: viewOffset - viewScroll + posY2 - OverlayAlertHeight}} message={i18n.t('range-0-1000')}/>}
 
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, marginBottom: 20}}>
                 <Text style={{marginBottom: 10, textAlign: 'center'}}>{i18n.t('questions')} 20-22 {i18n.t('of')} 54</Text>
                 <ProgressBar progress={0.35} color="#3C69E7" style={{width: 300, height: 15}}/>
             </View>

@@ -144,7 +144,8 @@ export default function PatientData({ navigation }) {
     return (
         <KeyboardAvoidingView
             style={{flex: 1}}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={Platform.select({ios: 0, android: 500})}
+            behavior= {(Platform.OS === 'ios') ? "padding" : null}
         >
         <SafeAreaView style={styles.container} >
             {answers.age?.dl && displayAlert === 1 &&

@@ -220,7 +220,9 @@ export default function App() {
 
     useEffect(() => {
 
-        getDataFromDevice();
+        const getDataFromDeviceEffect = () => getDataFromDevice();
+
+        getDataFromDeviceEffect();
 
     }, [])
 
@@ -246,7 +248,9 @@ export default function App() {
 
     useEffect(() => {
 
-        getRegisterinfo();
+        const getRegisterInfoEffect = () => getRegisterinfo();
+
+        getRegisterInfoEffect()
 
     }, [idDevice, registered])
 

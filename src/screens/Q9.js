@@ -1,4 +1,16 @@
-import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity} from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Dimensions,
+    SafeAreaView,
+    Platform,
+    StatusBar,
+    TextInput,
+    KeyboardAvoidingView,
+    ScrollView,
+    TouchableOpacity
+} from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import React, {useEffect, useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
@@ -17,8 +29,6 @@ export default function Q9({ navigation }) {
 
     useEffect(() => {
 
-        // setIsDisabled(!answers.gammaLeft || !answers.gammaRight || !answers.alfaOO || !answers.alfaOZ || !answers.alfaDyn)
-
         setIsDisabled(false)
 
     }, [answers])
@@ -26,6 +36,7 @@ export default function Q9({ navigation }) {
     useEffect(() => {
 
         setAnswers({ ...answers, prevNav: 'Q9' });
+
 
     }, [])
 
@@ -49,11 +60,14 @@ export default function Q9({ navigation }) {
     return (
         <KeyboardAvoidingView
             style={{flex: 1}}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={Platform.select({ios: 0, android: 500})}
+            behavior= {(Platform.OS === 'ios') ? "padding" : null}
         >
             <SafeAreaView style={styles.container}>
-                <View style={{flex: 1}}>
-                    <Text style={{marginBottom: 10, textAlign: 'center'}}>{i18n.t('questions')} 27-30 {i18n.t('of')} 54</Text>
+                <View style={{flex: 1, marginBottom: 20}}>
+                    <Text style={{marginBottom: 10, textAlign: 'center'}}>
+                        {i18n.t('questions')} 27-30 {i18n.t('of')} 54
+                    </Text>
                     <ProgressBar progress={0.5} color="#3C69E7" style={{width: 300, height: 15}}/>
                 </View>
                 <View style={{flex:9}}>
@@ -91,7 +105,8 @@ export default function Q9({ navigation }) {
                             onChangeText={(value) => selectAnswer('alfaOO', value)}
                             value={answers.alfaOO}
                         />
-                        <Text style={styles.label}>{i18n.t('q9f')}
+                        <Text style={styles.label}>
+                            {i18n.t('q9f')}
                         </Text>
                         <TextInput
                             style={styles.input}
@@ -99,7 +114,8 @@ export default function Q9({ navigation }) {
                             onChangeText={(value) => selectAnswer('alfaOZ', value)}
                             value={answers.alfaOZ}
                         />
-                        <Text style={styles.label}>{i18n.t('q9g')}
+                        <Text style={styles.label}>
+                            {i18n.t('q9g')}
                         </Text>
                         <TextInput
                             style={styles.input}
@@ -111,18 +127,24 @@ export default function Q9({ navigation }) {
                 </View>
                 <View style={{flex:1, marginBottom: 15, marginTop: 15}}>
                     <View style={styles.buttonsDown}>
-                    <TouchableOpacity style={{...styles.bottomBtn,
-                            backgroundColor: '#fff'}}
-                            onPress={() => navigation.replace('Q8')}>
-                            <Text style={styles.btnPrev}><Ionicons name="md-arrow-back" size={16} color="#3C69E7" /> {i18n.t('prev')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{...styles.bottomBtn,
-                            backgroundColor: isDisabled ? '#ccc' : '#3C69E7',
-                            borderColor: isDisabled ? '#ccc' : '#3C69E7'}}
-                            disabled={isDisabled}
-                            onPress={() => navigation.replace('Q10')}>
-                            <Text style={styles.btnNext}>{i18n.t('next')} <Ionicons name="md-arrow-forward" size={16} color="#fff" /></Text>
-                </TouchableOpacity>
+                        <TouchableOpacity style={{...styles.bottomBtn,
+                                backgroundColor: '#fff'}}
+                                onPress={() => navigation.replace('Q8')}>
+                                <Text style={styles.btnPrev}>
+                                    <Ionicons name="md-arrow-back" size={16} color="#3C69E7" />
+                                    {i18n.t('prev')}
+                                </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{...styles.bottomBtn,
+                                backgroundColor: isDisabled ? '#ccc' : '#3C69E7',
+                                borderColor: isDisabled ? '#ccc' : '#3C69E7'}}
+                                disabled={isDisabled}
+                                onPress={() => navigation.replace('Q10')}>
+                                <Text style={styles.btnNext}>
+                                    {i18n.t('next')}
+                                    <Ionicons name="md-arrow-forward" size={16} color="#fff" />
+                                </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </SafeAreaView>
