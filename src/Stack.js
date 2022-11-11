@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Home from './screens/Home'
 import SelectLang from './screens/SelectLang'
 import Info from './screens/Info'
@@ -54,8 +54,12 @@ const getData = async () => {
         }
 }
 
-React.useEffect(async () => {
-        await getData();
+useEffect( () => {
+
+    const getDataEffect = () => getData();
+
+    getDataEffect();
+
 }, [])
 
     return initialRoute ? (

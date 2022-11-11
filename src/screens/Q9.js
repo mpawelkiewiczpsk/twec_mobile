@@ -42,20 +42,20 @@ export default function Q9({ navigation }) {
 
     useEffect(() => {
 
-        if(answers.gammaLeft){
-            let right = parseInt(answers.gammaLeft);
+        if(answers.gammaLeft?.value){
+            let right = parseInt(answers.gammaLeft?.value);
 
             if(right >= 0 && right <= 100){
-                setAnswers({ ...answers, gammaRight: (100 - right).toString() })
+                setAnswers({ ...answers, gammaRight: { ...answers.gammaRight, value: (100 - right).toString() } })
             }else{
-                setAnswers({ ...answers, gammaRight: '0' })
+                setAnswers({ ...answers, gammaRight: { ...answers.gammaRight, value: '' } })
             }
         }else{
-            setAnswers({ ...answers, gammaRight: '' })
+            setAnswers({ ...answers, gammaRight: { ...answers.gammaRight, value: '' } })
         }
 
 
-    },[answers.gammaLeft])
+    },[answers.gammaLeft?.value])
 
     return (
         <KeyboardAvoidingView
@@ -79,20 +79,32 @@ export default function Q9({ navigation }) {
                             <View>
                                 <Text style={{...styles.label2, marginTop: 0}}>{i18n.t('q9c')} </Text>
                                 <TextInput
-                                    style={{...styles.input, width: (windowWidth / 2) - 40}}
+                                    style={{
+                                        ...styles.input,
+                                        borderColor: answers.gammaLeft?.error ? '#ff4d4f' : '#D1D5E1',
+                                        width: (windowWidth / 2) - 40
+                                    }}
                                     keyboardType='numeric'
-                                    onChangeText={(value) => selectAnswer('gammaLeft', value)}
-                                    value={answers.gammaLeft}
+                                    onChangeText={(value) => selectAnswer('gammaLeft', {
+                                        value: value,
+                                        error: parseInt(value) < 0 || parseInt(value) > 100
+                                    })}
+                                    value={answers.gammaLeft?.value}
                                 />
                             </View>
                             <View style={{marginLeft: 20}}>
-                                <Text style={{...styles.label2, marginTop: 0}}>{i18n.t('q9d')} </Text>
+                                <Text style={{...styles.label2,
+                                    borderColor: answers.gammaRight?.error ? '#ff4d4f' : '#D1D5E1',
+                                    marginTop: 0}}>{i18n.t('q9d')} </Text>
                                 <TextInput
                                     style={{...styles.input, width: (windowWidth / 2) - 40}}
                                     keyboardType='numeric'
                                     editable={false}
-                                    onChangeText={(value) => selectAnswer('gammaRight', value)}
-                                    value={answers.gammaRight}
+                                    onChangeText={(value) => selectAnswer('gammaRight', {
+                                        value: value,
+                                        error: parseInt(value) < 0 || parseInt(value) > 100
+                                    })}
+                                    value={answers.gammaRight?.value}
                                 />
                             </View>
                         </View>
@@ -100,28 +112,37 @@ export default function Q9({ navigation }) {
 
                         <Text style={styles.label}>{i18n.t('q9e')}</Text>
                         <TextInput
-                            style={styles.input}
+                            style={{ ...styles.input, borderColor: answers.alfaOO?.error ? '#ff4d4f' : '#D1D5E1'}}
                             keyboardType='numeric'
-                            onChangeText={(value) => selectAnswer('alfaOO', value)}
-                            value={answers.alfaOO}
+                            onChangeText={(value) => selectAnswer('alfaOO', {
+                                value: value,
+                                error: parseInt(value) < 0
+                            })}
+                            value={answers.alfaOO?.value}
                         />
                         <Text style={styles.label}>
                             {i18n.t('q9f')}
                         </Text>
                         <TextInput
-                            style={styles.input}
+                            style={{ ...styles.input, borderColor: answers.alfaOZ?.error ? '#ff4d4f' : '#D1D5E1' }}
                             keyboardType='numeric'
-                            onChangeText={(value) => selectAnswer('alfaOZ', value)}
-                            value={answers.alfaOZ}
+                            onChangeText={(value) => selectAnswer('alfaOZ', {
+                                value: value,
+                                error: parseInt(value) < 0
+                            })}
+                            value={answers.alfaOZ?.value}
                         />
                         <Text style={styles.label}>
                             {i18n.t('q9g')}
                         </Text>
                         <TextInput
-                            style={styles.input}
+                            style={{ ...styles.input, borderColor: answers.alfaDyn?.error ? '#ff4d4f' : '#D1D5E1' }}
                             keyboardType='numeric'
-                            onChangeText={(value) => selectAnswer('alfaDyn', value)}
-                            value={answers.alfaDyn}
+                            onChangeText={(value) => selectAnswer('alfaDyn', {
+                                value: value,
+                                error: parseInt(value) < 0
+                            })}
+                            value={answers.alfaDyn?.value}
                         />
                     </ScrollView>
                 </View>

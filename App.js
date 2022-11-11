@@ -99,11 +99,26 @@ const initialAnswers = {
         value: '',
         error: false
     },
-    gammaLeft: '',
-    gammaRight: '',
-    alfaOO: '',
-    alfaOZ: '',
-    alfaDyn: '',
+    gammaLeft: {
+        value: '',
+        error: false
+    },
+    gammaRight: {
+        value: '',
+        error: false
+    },
+    alfaOO: {
+        value: '',
+        error: false
+    },
+    alfaOZ: {
+        value: '',
+        error: false
+    },
+    alfaDyn: {
+        value: '',
+        error: false
+    },
     q14: '',
     q15: '',
     q16: '',
