@@ -52,10 +52,6 @@ const psk_authors = [
     },
     {
         id: '9',
-        name: 'mgr inż. Małgorzata Płaza',
-    },
-    {
-        id: '10',
         name: 'mgr inż. Mateusz Pawełkiewicz',
     }
 ];

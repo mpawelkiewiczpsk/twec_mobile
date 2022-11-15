@@ -25,14 +25,14 @@ const therapyListPL = [
         id: 0,
         name: 'Egzoszkielet',
         value: 0.87,
-        time: '30 minut',
+        time: '90 minut',
         description: 'Opis terapi'
     },
     {
         id: 1,
         name: 'Bieżnia + Platfromy',
         value: 0.55,
-        time: '1 godzina',
+        time: '90 minut',
         description: 'Opis terapi'
     }
 ]
@@ -231,7 +231,7 @@ function Summary({ navigation }) {
     return (
         <View style={styles.container}>
             <SafeAreaView style={{flex:1}}>
-                <ImageAnimator2 style={styles.image} />
+                {/*<ImageAnimator2 style={styles.image} />*/}
                 <View>
                 <Text style={styles.title}>{i18n.t('summary1')}</Text>
                 <Text style={styles.text}>{i18n.t('summary2')}</Text>
@@ -277,10 +277,20 @@ function Summary({ navigation }) {
                 <Modal visible={modalVisible} onDismiss={hideModal} contentContainerStyle={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <View style={styles.modalDescriptionContainer}>
-                            <ScrollView style={styles.modalScroll} contentContainerStyle={styles.modalScrollContent}  showsVerticalScrollIndicator={false}>
-                                <Text>
-                                    {therapyListPL?.find((therapy) => therapy.id === pickedTherapyId).description ?? 'Brak opisu'}
+                            <ScrollView style={styles.modalScroll}
+                                        contentContainerStyle={styles.modalScrollContent}
+                                        showsVerticalScrollIndicator={false}
+                            >
+                                <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 15 }}>
+                                    {/*{therapyListPL?.find((therapy) => therapy.id === pickedTherapyId).description ?? 'Brak opisu'}*/}
+                                    Przebieg rehabilitacji
                                 </Text>
+                                <Text style={styles.desc}>Procedury fizjoterapeutyczne wykonane zostaną w następującym porządku:</Text>
+                                <Text style={styles.desc}>1. Trening na urządzeniach Telko i Jupiter łącznie 20 minut,</Text>
+                                <Text style={styles.desc}>2. Trening Ekso/Zebris 30 - 40 minut,</Text>
+                                <Text style={styles.desc}>3. Platformy alfa i gamma łącznie 20 minut,</Text>
+                                <Text style={styles.desc}>4. Stretching - 10 minut.</Text>
+
                             </ScrollView>
                         </View>
                     <View style={styles.modalFooter}>
@@ -321,6 +331,9 @@ const styles = StyleSheet.create({
         fontSize: 28,
         color: '#262626',
         fontWeight: 'bold'
+    },
+    desc: {
+        marginBottom: 10
     },
     text: {
         fontSize: 16,
@@ -373,7 +386,7 @@ const styles = StyleSheet.create({
     },
     modalScrollContent: {
         justifyContent:'center',
-        alignItems:'center',
+        alignItems:'flex-start',
         flexGrow:1
     },
     modalFooter: {

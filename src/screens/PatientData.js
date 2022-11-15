@@ -59,14 +59,10 @@ export default function PatientData({ navigation }) {
 
         setWeightArray(selectValues(10, 181))
         setHeightArray(selectValues(100, 221))
-
-    }, [])
-
-    useEffect(() => {
-
         setAnswers({ ...answers, prevNav: 'PatientData' });
 
     }, [])
+
 
     useEffect(() => {
 
