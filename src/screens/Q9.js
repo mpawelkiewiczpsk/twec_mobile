@@ -28,7 +28,6 @@ export default function Q9({ navigation }) {
     const [posY1, setPosY1] = useState(0);
     const [posY2, setPosY2] = useState(0);
     const [posY3, setPosY3] = useState(0);
-    const [posY4, setPosY4] = useState(0);
     const [viewOffset, setViewOffset] = useState(0);
     const [viewScroll, setViewScroll] = useState(0);
 
@@ -80,18 +79,18 @@ export default function Q9({ navigation }) {
 
                 {answers.gammaLeft?.error && displayAlert === 1 &&
                     <OverlayAlert onClick={() => hideAlert()}
-                                  style={{top: viewOffset - viewScroll + posY0 - OverlayAlertHeight}}
+                                  style={{top: viewOffset - viewScroll + posY0 - 3*OverlayAlertHeight/4}}
                                   message={i18n.t('q2Reject')}
                                   arrowLeft={true}
                     />}
                 {answers.gammaRight?.error && displayAlert === 2 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY1 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY0 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
                 {answers.alfaOO?.error && displayAlert === 3 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY2 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY1 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
                 {answers.alfaOZ?.error && displayAlert === 4 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY3 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY2 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
                 {answers.alfaDyn?.error && displayAlert === 5 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY4 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY3 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
 
                 <View style={{flex: 1, marginBottom: 20}}>
                     <Text style={{marginBottom: 10, textAlign: 'center'}}>
@@ -107,8 +106,8 @@ export default function Q9({ navigation }) {
                         <Text style={styles.question}>{i18n.t('q9a')}</Text>
                         <Text style={styles.label}>{i18n.t('q9b')}</Text>
 
-                        <View style={styles.btnGroup}>
-                            <View onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
+                        <View style={styles.btnGroup} onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
+                            <View>
                                 <Text style={{...styles.label2, marginTop: 0}}>{i18n.t('q9c')} </Text>
                                 <TextInput
                                     style={{
@@ -131,7 +130,7 @@ export default function Q9({ navigation }) {
                                     value={answers.gammaLeft?.value}
                                 />
                             </View>
-                            <View style={{marginLeft: 20}} onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
+                            <View style={{marginLeft: 20}}>
                                 <Text style={{...styles.label2,
                                     borderColor: answers.gammaRight?.error ? '#ff4d4f' : '#D1D5E1',
                                     marginTop: 0}}>{i18n.t('q9d')} </Text>
@@ -152,7 +151,7 @@ export default function Q9({ navigation }) {
                             </View>
                         </View>
 
-                        <View onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
+                        <View onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
                             <Text style={styles.label}>{i18n.t('q9e')}</Text>
                             <TextInput
                                 style={{ ...styles.input, borderColor: answers.alfaOO?.error ? '#ff4d4f' : '#D1D5E1'}}
@@ -168,7 +167,7 @@ export default function Q9({ navigation }) {
                                 value={answers.alfaOO?.value}
                             />
                         </View>
-                        <View onLayout={event => {setPosY3(event.nativeEvent.layout.y);}}>
+                        <View onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
                             <Text style={styles.label}>
                                 {i18n.t('q9f')}
                             </Text>
@@ -186,7 +185,7 @@ export default function Q9({ navigation }) {
                                 value={answers.alfaOZ?.value}
                             />
                         </View>
-                        <View onLayout={event => {setPosY4(event.nativeEvent.layout.y);}}>
+                        <View onLayout={event => {setPosY3(event.nativeEvent.layout.y);}}>
                             <Text style={styles.label}>
                                 {i18n.t('q9g')}
                             </Text>
