@@ -16,12 +16,21 @@ import React, {useEffect, useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
 import {useQuestionsContext} from "../contexts/questions";
 import i18n from '../i18n-config'
+import {OverlayAlert, OverlayAlertHeight} from "../components/OverlayAlert";
 
 const windowWidth = Dimensions.get('screen').width;
 
 export default function Q9({ navigation }) {
     const { answers, setAnswers } = useQuestionsContext();
     const [isDisabled, setIsDisabled] = useState(false);
+    const [displayAlert, setDisplayAlert] = useState(null)
+    const [posY0, setPosY0] = useState(0);
+    const [posY1, setPosY1] = useState(0);
+    const [posY2, setPosY2] = useState(0);
+    const [posY3, setPosY3] = useState(0);
+    const [posY4, setPosY4] = useState(0);
+    const [viewOffset, setViewOffset] = useState(0);
+    const [viewScroll, setViewScroll] = useState(0);
 
     const selectAnswer = (key, value) => {
         setAnswers({ ...answers, [key]: value })
@@ -57,6 +66,10 @@ export default function Q9({ navigation }) {
 
     },[answers.gammaLeft?.value])
 
+    const hideAlert = () => {
+        setDisplayAlert(null)
+    }
+
     return (
         <KeyboardAvoidingView
             style={{flex: 1}}
@@ -64,19 +77,31 @@ export default function Q9({ navigation }) {
             behavior= {(Platform.OS === 'ios') ? "padding" : null}
         >
             <SafeAreaView style={styles.container}>
+
+                {answers.gammaLeft?.error && displayAlert === 1 &&
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY0 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                {answers.gammaRight?.error && displayAlert === 2 &&
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY1 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                {answers.alfaOO?.error && displayAlert === 3 &&
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY2 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                {answers.alfaOZ?.error && displayAlert === 4 &&
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY3 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                {answers.alfaDyn?.error && displayAlert === 5 &&
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY4 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+
                 <View style={{flex: 1, marginBottom: 20}}>
                     <Text style={{marginBottom: 10, textAlign: 'center'}}>
                         {i18n.t('questions')} 27-30 {i18n.t('of')} 54
                     </Text>
                     <ProgressBar progress={0.5} color="#3C69E7" style={{width: 300, height: 15}}/>
                 </View>
-                <View style={{flex:9}}>
-                    <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={{flex:9}} onLayout={event => {setViewOffset(event.nativeEvent.layout.y);}}>
+                    <ScrollView onScroll={event => {setViewScroll(event.nativeEvent.contentOffset.y)}} showsVerticalScrollIndicator={false}>
                         <Text style={styles.question}>{i18n.t('q9a')}</Text>
                         <Text style={styles.label}>{i18n.t('q9b')}</Text>
 
                         <View style={styles.btnGroup}>
-                            <View>
+                            <View onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
                                 <Text style={{...styles.label2, marginTop: 0}}>{i18n.t('q9c')} </Text>
                                 <TextInput
                                     style={{
@@ -92,7 +117,7 @@ export default function Q9({ navigation }) {
                                     value={answers.gammaLeft?.value}
                                 />
                             </View>
-                            <View style={{marginLeft: 20}}>
+                            <View style={{marginLeft: 20}} onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
                                 <Text style={{...styles.label2,
                                     borderColor: answers.gammaRight?.error ? '#ff4d4f' : '#D1D5E1',
                                     marginTop: 0}}>{i18n.t('q9d')} </Text>
@@ -109,41 +134,46 @@ export default function Q9({ navigation }) {
                             </View>
                         </View>
 
-
-                        <Text style={styles.label}>{i18n.t('q9e')}</Text>
-                        <TextInput
-                            style={{ ...styles.input, borderColor: answers.alfaOO?.error ? '#ff4d4f' : '#D1D5E1'}}
-                            keyboardType='numeric'
-                            onChangeText={(value) => selectAnswer('alfaOO', {
-                                value: value,
-                                error: parseInt(value) < 0
-                            })}
-                            value={answers.alfaOO?.value}
-                        />
-                        <Text style={styles.label}>
-                            {i18n.t('q9f')}
-                        </Text>
-                        <TextInput
-                            style={{ ...styles.input, borderColor: answers.alfaOZ?.error ? '#ff4d4f' : '#D1D5E1' }}
-                            keyboardType='numeric'
-                            onChangeText={(value) => selectAnswer('alfaOZ', {
-                                value: value,
-                                error: parseInt(value) < 0
-                            })}
-                            value={answers.alfaOZ?.value}
-                        />
-                        <Text style={styles.label}>
-                            {i18n.t('q9g')}
-                        </Text>
-                        <TextInput
-                            style={{ ...styles.input, borderColor: answers.alfaDyn?.error ? '#ff4d4f' : '#D1D5E1' }}
-                            keyboardType='numeric'
-                            onChangeText={(value) => selectAnswer('alfaDyn', {
-                                value: value,
-                                error: parseInt(value) < 0
-                            })}
-                            value={answers.alfaDyn?.value}
-                        />
+                        <View onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
+                            <Text style={styles.label}>{i18n.t('q9e')}</Text>
+                            <TextInput
+                                style={{ ...styles.input, borderColor: answers.alfaOO?.error ? '#ff4d4f' : '#D1D5E1'}}
+                                keyboardType='numeric'
+                                onChangeText={(value) => selectAnswer('alfaOO', {
+                                    value: value,
+                                    error: parseInt(value) < 0
+                                })}
+                                value={answers.alfaOO?.value}
+                            />
+                        </View>
+                        <View onLayout={event => {setPosY3(event.nativeEvent.layout.y);}}>
+                            <Text style={styles.label}>
+                                {i18n.t('q9f')}
+                            </Text>
+                            <TextInput
+                                style={{ ...styles.input, borderColor: answers.alfaOZ?.error ? '#ff4d4f' : '#D1D5E1' }}
+                                keyboardType='numeric'
+                                onChangeText={(value) => selectAnswer('alfaOZ', {
+                                    value: value,
+                                    error: parseInt(value) < 0
+                                })}
+                                value={answers.alfaOZ?.value}
+                            />
+                        </View>
+                        <View onLayout={event => {setPosY4(event.nativeEvent.layout.y);}}>
+                            <Text style={styles.label}>
+                                {i18n.t('q9g')}
+                            </Text>
+                            <TextInput
+                                style={{ ...styles.input, borderColor: answers.alfaDyn?.error ? '#ff4d4f' : '#D1D5E1' }}
+                                keyboardType='numeric'
+                                onChangeText={(value) => selectAnswer('alfaDyn', {
+                                    value: value,
+                                    error: parseInt(value) < 0
+                                })}
+                                value={answers.alfaDyn?.value}
+                            />
+                        </View>
                     </ScrollView>
                 </View>
                 <View style={{flex:1, marginBottom: 15, marginTop: 15}}>
