@@ -79,7 +79,11 @@ export default function Q9({ navigation }) {
             <SafeAreaView style={styles.container}>
 
                 {answers.gammaLeft?.error && displayAlert === 1 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY0 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()}
+                                  style={{top: viewOffset - viewScroll + posY0 - OverlayAlertHeight}}
+                                  message={i18n.t('q2Reject')}
+                                  arrowLeft={true}
+                    />}
                 {answers.gammaRight?.error && displayAlert === 2 &&
                     <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY1 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
                 {answers.alfaOO?.error && displayAlert === 3 &&
@@ -96,7 +100,10 @@ export default function Q9({ navigation }) {
                     <ProgressBar progress={0.5} color="#3C69E7" style={{width: 300, height: 15}}/>
                 </View>
                 <View style={{flex:9}} onLayout={event => {setViewOffset(event.nativeEvent.layout.y);}}>
-                    <ScrollView onScroll={event => {setViewScroll(event.nativeEvent.contentOffset.y)}} showsVerticalScrollIndicator={false}>
+                    <ScrollView
+                        onScroll={event => {setViewScroll(event.nativeEvent.contentOffset.y)}}
+                        showsVerticalScrollIndicator={false}
+                    >
                         <Text style={styles.question}>{i18n.t('q9a')}</Text>
                         <Text style={styles.label}>{i18n.t('q9b')}</Text>
 
@@ -110,10 +117,17 @@ export default function Q9({ navigation }) {
                                         width: (windowWidth / 2) - 40
                                     }}
                                     keyboardType='numeric'
-                                    onChangeText={(value) => selectAnswer('gammaLeft', {
-                                        value: value,
-                                        error: parseInt(value) < 0 || parseInt(value) > 100
-                                    })}
+                                    onChangeText={
+                                        (value) => {
+
+                                            selectAnswer('gammaLeft', {
+                                                value: value,
+                                                error: parseInt(value) < 0 || parseInt(value) > 100
+                                            })
+
+                                            setDisplayAlert(1);
+
+                                        }}
                                     value={answers.gammaLeft?.value}
                                 />
                             </View>
@@ -125,10 +139,14 @@ export default function Q9({ navigation }) {
                                     style={{...styles.input, width: (windowWidth / 2) - 40}}
                                     keyboardType='numeric'
                                     editable={false}
-                                    onChangeText={(value) => selectAnswer('gammaRight', {
-                                        value: value,
-                                        error: parseInt(value) < 0 || parseInt(value) > 100
-                                    })}
+                                    onChangeText={(value) => {
+                                        selectAnswer('gammaRight', {
+                                            value: value,
+                                            error: parseInt(value) < 0 || parseInt(value) > 100
+                                        })
+
+                                        setDisplayAlert(2)
+                                    }}
                                     value={answers.gammaRight?.value}
                                 />
                             </View>
@@ -139,10 +157,14 @@ export default function Q9({ navigation }) {
                             <TextInput
                                 style={{ ...styles.input, borderColor: answers.alfaOO?.error ? '#ff4d4f' : '#D1D5E1'}}
                                 keyboardType='numeric'
-                                onChangeText={(value) => selectAnswer('alfaOO', {
-                                    value: value,
-                                    error: parseInt(value) < 0
-                                })}
+                                onChangeText={(value) => {
+                                    selectAnswer('alfaOO', {
+                                        value: value,
+                                        error: parseInt(value) < 0
+                                    })
+
+                                    setDisplayAlert(3)
+                                }}
                                 value={answers.alfaOO?.value}
                             />
                         </View>
@@ -153,10 +175,14 @@ export default function Q9({ navigation }) {
                             <TextInput
                                 style={{ ...styles.input, borderColor: answers.alfaOZ?.error ? '#ff4d4f' : '#D1D5E1' }}
                                 keyboardType='numeric'
-                                onChangeText={(value) => selectAnswer('alfaOZ', {
-                                    value: value,
-                                    error: parseInt(value) < 0
-                                })}
+                                onChangeText={(value) => {
+                                    selectAnswer('alfaOZ', {
+                                        value: value,
+                                        error: parseInt(value) < 0
+                                    })
+
+                                    setDisplayAlert(4)
+                                }}
                                 value={answers.alfaOZ?.value}
                             />
                         </View>
@@ -167,10 +193,14 @@ export default function Q9({ navigation }) {
                             <TextInput
                                 style={{ ...styles.input, borderColor: answers.alfaDyn?.error ? '#ff4d4f' : '#D1D5E1' }}
                                 keyboardType='numeric'
-                                onChangeText={(value) => selectAnswer('alfaDyn', {
-                                    value: value,
-                                    error: parseInt(value) < 0
-                                })}
+                                onChangeText={(value) => {
+                                    selectAnswer('alfaDyn', {
+                                        value: value,
+                                        error: parseInt(value) < 0
+                                    })
+
+                                    setDisplayAlert(5)
+                                }}
                                 value={answers.alfaDyn?.value}
                             />
                         </View>

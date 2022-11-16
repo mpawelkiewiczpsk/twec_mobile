@@ -106,7 +106,10 @@ export default function Q8({ navigation }) {
                     <ProgressBar progress={0.45} color="#3C69E7" style={{width: 300, height: 15}}/>
                 </View>
                 <View style={{flex:9}} onLayout={event => {setViewOffset(event.nativeEvent.layout.y);}}>
-                    <ScrollView onScroll={event => {setViewScroll(event.nativeEvent.contentOffset.y)}} showsVerticalScrollIndicator={false}>
+                    <ScrollView
+                        onScroll={event => {setViewScroll(event.nativeEvent.contentOffset.y)}}
+                        showsVerticalScrollIndicator={false}
+                    >
                     <Text style={styles.question}>{i18n.t('q8a')}</Text>
                     <Text style={styles.label}>{i18n.t('q8b')}</Text>
 
