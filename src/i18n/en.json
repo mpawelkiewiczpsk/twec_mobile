@@ -84,6 +84,7 @@
     "patientRejectExoPla": "The chosen answer excludes the patient from therapies with the use of the exoskeleton and platforms.",
     "range-0-100": "Valid range from 0 to 100",
     "range-0-1000": "Valid range from 0 to 1000",
+    "range-min": "The value must be greater than 0",
     "exit": "Finish",
     "summary1": "Projected effectiveness of therapies",
     "summary2": "Based on the answers provided, the patient is offered the following therapies:",

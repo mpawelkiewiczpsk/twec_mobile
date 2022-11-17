@@ -80,17 +80,17 @@ export default function Q9({ navigation }) {
                 {answers.gammaLeft?.error && displayAlert === 1 &&
                     <OverlayAlert onClick={() => hideAlert()}
                                   style={{top: viewOffset - viewScroll + posY0 - 3*OverlayAlertHeight/4}}
-                                  message={i18n.t('q2Reject')}
+                                  message={i18n.t('range-0-100')}
                                   arrowLeft={true}
                     />}
                 {answers.gammaRight?.error && displayAlert === 2 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY0 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY0 - 3*OverlayAlertHeight/4}} message={i18n.t('range-0-100')}/>}
                 {answers.alfaOO?.error && displayAlert === 3 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY1 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY1 - 3*OverlayAlertHeight/4}} message={i18n.t('range-min')}/>}
                 {answers.alfaOZ?.error && displayAlert === 4 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY2 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY2 - 3*OverlayAlertHeight/4}} message={i18n.t('range-min')}/>}
                 {answers.alfaDyn?.error && displayAlert === 5 &&
-                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY3 - 3*OverlayAlertHeight/4}} message={i18n.t('q2Reject')}/>}
+                    <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY3 - 3*OverlayAlertHeight/4}} message={i18n.t('range-min')}/>}
 
                 <View style={{flex: 1, marginBottom: 20}}>
                     <Text style={{marginBottom: 10, textAlign: 'center'}}>

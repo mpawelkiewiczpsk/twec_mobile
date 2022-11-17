@@ -84,6 +84,7 @@
     "patientRejectExoPla": "Wybrana odpowiedź wyklucza pacjenta z terapii z wykorzystaniem egzoszkieletu i platform.",
     "range-0-100": "Zakres od 0 do 100",
     "range-0-1000": "Zakres od 0 do 1000",
+    "range-min": "Wartość musi być większa od 0",
     "exit": "Zakończ",
     "summary1": "Prognozowana skuteczność terapii",
     "summary2": "Na podstawie udzielonych odpowiedzi proponuje się pacjentowi następujące terapie:",
