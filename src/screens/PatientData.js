@@ -242,7 +242,7 @@ export default function PatientData({ navigation }) {
                             style={pickerSelectStyles}
                         />
                     </View>
-                    <Text style={styles.label}>BMI</Text>
+                    <Text style={styles.label}>BMI (kg/m^2)</Text>
                     <TextInput
                         style={styles.input}
                         editable={false}

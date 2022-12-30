@@ -50,8 +50,8 @@
     "q7a": "Foot contact with the ground during the initial contact",
     "q7b": "from the heel",
     "q7c": "otherwise",
-    "q7d": "Treatment with botulinum toxin",
-    "q8a": "Zebris treadmill",
+    "q7d": "Treatment with botulinum toxin in the last 6 months",
+    "q8a": "Preferred and maximum walking speed",
     "q8b": "Preferred walking speed (m/s)",
     "q8c": "Maximum walking speed (m/s)",
     "q8d": "Valid range from 0.05 to 2.0",
@@ -98,5 +98,8 @@
     "authors": "Authors",
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "goToHome": "Home"
+    "goToHome": "Home",
+    "optionalParameter": "[parametr opcjonalny]",
+    "trost": "Modified Trost scale",
+    "ashworth": "Modified Ashworth Scale"
 }

@@ -63,7 +63,7 @@ useEffect( () => {
 }, [])
 
     return initialRoute ? (
-        <Stack.Navigator initialRouteName={initialRoute}>
+        <Stack.Navigator initialRouteName={"Q12"}>
                 <Stack.Screen name="SelectLang" component={SelectLang} options={headerOption} />
                 <Stack.Screen name="Home" component={Home} options={headerOption} />
                 <Stack.Screen name="Info" component={Info} options={headerOption} />

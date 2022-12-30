@@ -105,6 +105,7 @@ export default function Q9({ navigation }) {
                     >
                         <Text style={styles.question}>{i18n.t('q9a')}</Text>
                         <Text style={styles.label}>{i18n.t('q9b')}</Text>
+                        <Text style={styles.optional}>{i18n.t('optionalParameter')}</Text>
 
                         <View style={styles.btnGroup} onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
                             <View>
@@ -153,6 +154,7 @@ export default function Q9({ navigation }) {
 
                         <View onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
                             <Text style={styles.label}>{i18n.t('q9e')}</Text>
+                            <Text style={styles.optional}>{i18n.t('optionalParameter')}</Text>
                             <TextInput
                                 style={{ ...styles.input, borderColor: answers.alfaOO?.error ? '#ff4d4f' : '#D1D5E1'}}
                                 keyboardType='numeric'
@@ -171,6 +173,7 @@ export default function Q9({ navigation }) {
                             <Text style={styles.label}>
                                 {i18n.t('q9f')}
                             </Text>
+                            <Text style={styles.optional}>{i18n.t('optionalParameter')}</Text>
                             <TextInput
                                 style={{ ...styles.input, borderColor: answers.alfaOZ?.error ? '#ff4d4f' : '#D1D5E1' }}
                                 keyboardType='numeric'
@@ -189,6 +192,7 @@ export default function Q9({ navigation }) {
                             <Text style={styles.label}>
                                 {i18n.t('q9g')}
                             </Text>
+                            <Text style={styles.optional}>{i18n.t('optionalParameter')}</Text>
                             <TextInput
                                 style={{ ...styles.input, borderColor: answers.alfaDyn?.error ? '#ff4d4f' : '#D1D5E1' }}
                                 keyboardType='numeric'
@@ -296,6 +300,9 @@ const styles = StyleSheet.create({
         width: windowWidth - 40,
         flex: 1,
         flexWrap: 'wrap'
+    },
+    optional: {
+        marginBottom: 5
     },
     label2: {
         color: '#262626',

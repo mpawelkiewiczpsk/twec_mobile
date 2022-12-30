@@ -1,9 +1,10 @@
-import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TouchableOpacity, TouchableHighlight} from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 import {Ionicons} from "@expo/vector-icons";
 import {useQuestionsContext} from "../contexts/questions";
 import {useEffect, useState} from "react";
+import { Tooltip, IconButton } from 'react-native-paper';
 import i18n from '../i18n-config'
 
 const windowWidth = Dimensions.get('window').width;
@@ -26,6 +27,8 @@ const placeholder = {
 export default function Q12({ navigation }) {
     const { answers, setAnswers } = useQuestionsContext();
     const [isDisabled, setIsDisabled] = useState(false);
+    const [tooltip1, setTooltip1] = useState(false);
+    const [tooltip2, setTooltip2] = useState(false);
 
     useEffect(() => {
 
@@ -51,7 +54,22 @@ export default function Q12({ navigation }) {
             </View>
             <View style={{flex:9}}>
 
-                <Text style={styles.question}>{i18n.t('q12a')}</Text>
+                <View style={{flexDirection: 'row' }}>
+                    <View>
+                        <Text style={styles.question}>
+                            {i18n.t('q12a')}
+                        </Text>
+                    </View>
+                    <View>
+                        <Tooltip title={i18n.t('trost')} enterTouchDelay={1} leaveTouchDelay={5000}>
+                            <IconButton icon="help-circle-outline" selected size={20} onPress={() => {}} />
+                        </Tooltip>
+                    </View>
+                </View>
+
+
+
+
 
                 <View style={styles.btnGroup}>
                     <View style={{width: (windowWidth / 2) - 40}}>
@@ -80,7 +98,18 @@ export default function Q12({ navigation }) {
                     </View>
                 </View>
 
-                <Text style={{...styles.question, marginTop: 25}}>{i18n.t('q12b')} </Text>
+
+                <View style={{flexDirection: 'row', marginTop: 25 }}>
+                    <View>
+                        <Text style={{...styles.question}}>{i18n.t('q12b')} </Text>
+                    </View>
+                    <View>
+                        <Tooltip title={i18n.t('trost')} enterTouchDelay={1} leaveTouchDelay={5000}>
+                            <IconButton icon="help-circle-outline" selected size={20} onPress={() => {}} />
+                        </Tooltip>
+                    </View>
+                </View>
+
 
                 <View style={styles.btnGroup}>
                     <View style={{width: (windowWidth / 2) - 40}}>

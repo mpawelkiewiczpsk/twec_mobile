@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TouchableOpacity} from 'react-native';
 import { ProgressBar } from 'react-native-paper';
+import { Tooltip, IconButton } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 import {Ionicons} from "@expo/vector-icons";
 import {useQuestionsContext} from "../contexts/questions";
@@ -51,7 +52,18 @@ export default function Q13({ navigation }) {
             </View>
             <View style={{flex:9}}>
 
-                <Text style={styles.question}>{i18n.t('q13a')}</Text>
+                <View style={{flexDirection: 'row' }}>
+                    <View>
+                        <Text style={styles.question}>{i18n.t('q13a')}</Text>
+                    </View>
+                    <View>
+                        <Tooltip title={i18n.t('trost')} enterTouchDelay={1} leaveTouchDelay={5000}>
+                            <IconButton icon="help-circle-outline" selected size={20} onPress={() => {}} />
+                        </Tooltip>
+                    </View>
+                </View>
+
+
 
                 <View style={styles.btnGroup}>
                     <View style={{width: (windowWidth / 2) - 40}}>
@@ -80,7 +92,19 @@ export default function Q13({ navigation }) {
                     </View>
                 </View>
 
-                <Text style={{...styles.question, marginTop: 25}}>{i18n.t('q13b')} </Text>
+
+                <View style={{flexDirection: 'row', marginTop: 25 }}>
+                    <View>
+                        <Text style={{...styles.question}}>{i18n.t('q13b')} </Text>
+                    </View>
+                    <View>
+                        <Tooltip title={i18n.t('trost')} enterTouchDelay={1} leaveTouchDelay={5000}>
+                            <IconButton icon="help-circle-outline" selected size={20} onPress={() => {}} />
+                        </Tooltip>
+                    </View>
+                </View>
+
+
 
                 <View style={styles.btnGroup}>
                     <View style={{width: (windowWidth / 2) - 40}}>

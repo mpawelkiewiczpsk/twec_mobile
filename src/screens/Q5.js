@@ -19,6 +19,7 @@ export default function Q5({ navigation }) {
     const [displayAlert, setDisplayAlert] = useState(null)
     const [posY0, setPosY0] = useState(0);
     const [posY1, setPosY1] = useState(0);
+    const [posY2, setPosY2] = useState(0);
 
     const selectAnswer = (key, value) => {
         setAnswers({ ...answers, [key]: value })
@@ -69,6 +70,9 @@ export default function Q5({ navigation }) {
 
             {answers.gmfcs?.value === 'V' && displayAlert === 2 &&
             <OverlayAlert onClick={() => hideAlert()} arrowLeft="true" style={{top: viewOffset - viewScroll + posY1 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
+
+            {answers.gmfcs?.value === 'IV' && displayAlert === 3 &&
+            <OverlayAlert onClick={() => hideAlert()} style={{top: viewOffset - viewScroll + posY2 - OverlayAlertHeight}} message={i18n.t('q2Reject')}/>}
 
             <View style={{flex: 1}}>
                 <Text style={{marginBottom: 10, textAlign: 'center'}}>{i18n.t('questions')} 18-19 {i18n.t('of')} 54</Text>
@@ -147,7 +151,7 @@ export default function Q5({ navigation }) {
                         {answers.gmfcs?.value === 'II' && <CheckIcon/>} II
                     </Button>
                 </View>
-                <View style={styles.btnGroup}>
+                <View style={styles.btnGroup} onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
                     <Button style={{marginBottom: 15}}
                             contentStyle={{...styles.buttonStyle, borderColor: answers.gmfcs?.value === 'III' ? '#3C69E7' : '#000'}}
                             color={answers.gmfcs?.value === 'III' ? "#3C69E7" : "#262626"}
@@ -159,12 +163,12 @@ export default function Q5({ navigation }) {
                         {answers.gmfcs?.value === 'III' && <CheckIcon/>} III
                     </Button>
                     <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.gmfcs?.value === 'IV' ? '#3C69E7' : '#000'}}
+                            contentStyle={{...styles.buttonStyle, borderColor: answers.gmfcs?.value === 'IV' ? '#ff4d4f' : '#000'}}
                             color={answers.gmfcs?.value === 'IV' ? "#3C69E7" : "#262626"}
                             mode="outlined"
                             onPress={() => {
-                                selectAnswer('gmfcs', { value: 'IV', 'dl': false })
-                                setDisplayAlert(null)
+                                selectAnswer('gmfcs', { value: 'IV', 'dl': true })
+                                setDisplayAlert(3)
                             }}>
                         {answers.gmfcs?.value === 'IV' && <CheckIcon/>} IV
                     </Button>

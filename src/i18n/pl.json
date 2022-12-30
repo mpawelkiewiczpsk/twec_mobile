@@ -50,8 +50,8 @@
     "q7a": "Kontakt stopy z podłożem podczas fazy pierwszego kontaktu stopy z podłożem",
     "q7b": "od pięty",
     "q7c": "inaczej",
-    "q7d": "Leczenie toksyną botulinową",
-    "q8a": "Bieżnia Zebris",
+    "q7d": "Leczenie toksyną botulinową w ciągu ostatnich 6 miesięcy",
+    "q8a": "Prędkość chodu preferowana i maksymalna",
     "q8b": "Prędkość chodu preferowana (m/s)",
     "q8c": "Prędkość chodu maksymalna (m/s)",
     "q8d": "Zakres od 0.05 do 2.0",
@@ -98,5 +98,8 @@
     "authors": "Autorzy",
     "cancel": "Anuluj",
     "confirm": "Potwierdź",
-    "goToHome": "Strona główna"
+    "goToHome": "Strona główna",
+    "optionalParameter": "[parametr opcjonalny]",
+    "trost": "Zmodyfikowana skala Trost",
+    "ashworth": "Zmodyfikowana skala Ashworth"
 }
