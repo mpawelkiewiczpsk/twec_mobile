@@ -101,5 +101,7 @@
     "goToHome": "Home",
     "optionalParameter": "[parametr opcjonalny]",
     "trost": "Modified Trost scale",
-    "ashworth": "Modified Ashworth Scale"
+    "ashworth": "Modified Ashworth Scale",
+    "summaryTherapy1": "The course of rehabilitation",
+    "summaryTherapy2": "Physiotherapy procedures will be performed in the following order:"
 }

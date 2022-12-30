@@ -25,15 +25,36 @@ const therapyListPL = [
         id: 0,
         name: 'Egzoszkielet',
         value: 0.87,
-        time: '90 minut',
-        description: 'Opis terapi'
+        time: '70 minut',
+        description: [
+            '1.trening na urządzeniach Telko i Jupiter łącznie 20 minut,',
+            '2. trening Ekso 30-40 minut,',
+            '3. stretching 10 minut.'
+        ]
     },
     {
         id: 1,
         name: 'Bieżnia + Platfromy',
         value: 0.55,
         time: '90 minut',
-        description: 'Opis terapi'
+        description: [
+            '1. trening na urządzeniach Telko i Jupiter łącznie 20 minut,',
+            '2. trening Bieżnia 30-40 minut,',
+            '3. Platformy Alfa i Gamma łącznie 20 minut,',
+            '4. stretching 10 minut.'
+        ]
+    },
+    {
+        id: 2,
+        name: 'Egzoszkielet + Platformy',
+        value: 0.40,
+        time: '90 minut',
+        description: [
+            '1. trening na urządzeniach Telko i Jupiter łącznie 20 minut,',
+            '2. trening Ekso 30-40 minut,',
+            '3. Platformy Alfa i Gamma łącznie 20 minut,',
+            '4. stretching 10 minut.'
+        ]
     }
 ]
 
@@ -42,15 +63,36 @@ const therapyListEN = [
         id: 0,
         name: 'The exoskeleton',
         value: 0.87,
-        time: '30 minutes',
-        description: 'Description of the therapy'
+        time: '70 minutes',
+        description: [
+            '1. training on Telko and Jupiter devices in total 20 minutes,',
+            '2. Ekso training 30-40 minutes,',
+            '3. stretching 10 minutes.'
+        ]
     },
     {
         id: 1,
         name: 'Treadmill + Platforms',
         value: 0.55,
-        time: '1 hour',
-        description: 'Description of the therapy'
+        time: '90 minutes',
+        description: [
+            '1. training on Telko and Jupiter devices in total 20 minutes,',
+            '2. training Treadmill 30-40 minutes,',
+            '3. Alfa and Gamma platforms 20 minutes in total,',
+            '4. stretching 10 minutes.'
+        ]
+    },
+    {
+        id: 2,
+        name: 'Exoskeleton + Platforms',
+        value: 0.40,
+        time: '90 minutes',
+        description: [
+            '1. training on Telko and Jupiter devices in total 20 minutes,',
+            '2. Ekso training 30-40 minutes,',
+            '3. Alfa and Gamma platforms 20 minutes in total,',
+            '4. stretching 10 minutes.'
+        ]
     }
 ]
 
@@ -216,12 +258,19 @@ function Summary({ navigation }) {
     const { removeAllAnswers } = useQuestionsContext();
     const [modalVisible, setModalVisible] = useState(false);
     const [pickedTherapyId, setPickedTherapyId] = useState(0);
+    const [therapyList, setTherapyList] = useState(therapyListPL);
     const showModal = () => setModalVisible(true);
     const hideModal = () => setModalVisible(false);
     const onTherapy = (therapyId) => {
         setPickedTherapyId(therapyId);
         showModal();
     }
+
+    useEffect(() => {
+
+        if(i18n.locale === 'en') setTherapyList(therapyListEN)
+
+    }, [])
 
     const backToHome = () => {
         removeAllAnswers();
@@ -238,7 +287,7 @@ function Summary({ navigation }) {
                 </View>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <FadeInView style={styles.summary}>
-                        {therapyListPL.map((item, index) => (
+                        {therapyList.map((item, index) => (
                             <TouchableOpacity onPress={() => onTherapy(item.id)} key={item.id}>
                                 <Card style={{ marginBottom: 15, backgroundColor: '#fff', opacity: 0.85 }}>
                                     <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems:'flex-start', marginVertical: 20}}>
@@ -282,14 +331,19 @@ function Summary({ navigation }) {
                                         showsVerticalScrollIndicator={false}
                             >
                                 <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 15 }}>
-                                    {/*{therapyListPL?.find((therapy) => therapy.id === pickedTherapyId).description ?? 'Brak opisu'}*/}
-                                    Przebieg rehabilitacji
+
+                                    {i18n.t('summaryTherapy1')}
                                 </Text>
-                                <Text style={styles.desc}>Procedury fizjoterapeutyczne wykonane zostaną w następującym porządku:</Text>
-                                <Text style={styles.desc}>1. Trening na urządzeniach Telko i Jupiter łącznie 20 minut,</Text>
-                                <Text style={styles.desc}>2. Trening Ekso/Zebris 30 - 40 minut,</Text>
-                                <Text style={styles.desc}>3. Platformy alfa i gamma łącznie 20 minut,</Text>
-                                <Text style={styles.desc}>4. Stretching - 10 minut.</Text>
+                                <Text style={styles.desc}>
+                                    {i18n.t('summaryTherapy2')}
+                                </Text>
+
+                                {therapyList?.find((therapy) => therapy.id === pickedTherapyId).description.map((item, index) => (
+                                    <Text key={index} style={styles.desc}>{item}</Text>
+                                )) ?? 'Brak opisu'}
+
+
+
 
                             </ScrollView>
                         </View>

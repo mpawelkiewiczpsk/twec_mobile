@@ -101,5 +101,7 @@
     "goToHome": "Strona główna",
     "optionalParameter": "[parametr opcjonalny]",
     "trost": "Zmodyfikowana skala Trost",
-    "ashworth": "Zmodyfikowana skala Ashworth"
+    "ashworth": "Zmodyfikowana skala Ashworth",
+    "summaryTherapy1": "Przebieg rehabilitacji",
+    "summaryTherapy2": "Procedury fizjoterapeutyczne wykonane zostaną w następującym porządku:"
 }
