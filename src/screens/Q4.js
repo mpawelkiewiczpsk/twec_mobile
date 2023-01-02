@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TouchableOpacity} from 'react-native';
-import { ProgressBar, Button } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 import {Ionicons} from "@expo/vector-icons";
 import {useQuestionsContext} from "../contexts/questions";
 import CheckIcon from "../components/CheckIcon";
@@ -71,59 +71,72 @@ export default function Q4({ navigation }) {
             </View>
             <View style={{flex:9}} onLayout={event => {setViewOffset(event.nativeEvent.layout.y);}}>
                 <Text style={styles.question}>{i18n.t('q4a')}</Text>
-                <Button style={{marginBottom: 15}}
-                        contentStyle={{...styles.buttonStyle, borderColor: answers.mpd?.value === 'hemiparetyczna' ? '#3C69E7' : '#000'}}
-                        color={answers.mpd?.value === 'hemiparetyczna' ? "#3C69E7" : "#262626"}
-                        mode="outlined"
-                        onPress={() => {
-                            selectAnswer('mpd', { value: 'hemiparetyczna', 'dl': false })
-                            setDisplayAlert(null)
-                        }}>
-                    {answers.mpd?.value === 'hemiparetyczna' && <CheckIcon/>} {i18n.t('q4b')}
-                </Button>
-                <Button style={{marginBottom: 15}}
-                        contentStyle={{...styles.buttonStyle, borderColor: answers.mpd?.value === 'diplegia' ? '#3C69E7' : '#000'}}
-                        color={answers.mpd?.value === 'diplegia' ? "#3C69E7" : "#262626"}
-                        mode="outlined"
-                        onPress={() => {
-                            selectAnswer('mpd', { value: 'diplegia', 'dl': false })
-                            setDisplayAlert(null)
-                        }}>
-                    {answers.mpd?.value === 'diplegia' && <CheckIcon/>} {i18n.t('q4c')}
-                </Button>
 
-                <Button style={{marginBottom: 15}}
-                        contentStyle={{...styles.buttonStyle, borderColor: answers.mpd?.value === 'tetraplegia' ? '#3C69E7' : '#000'}}
-                        color={answers.mpd?.value === 'tetraplegia' ? "#3C69E7" : "#262626"}
-                        mode="outlined"
-                        onPress={() => {
-                            selectAnswer('mpd', { value: 'tetraplegia', 'dl': false })
-                            setDisplayAlert(null)
-                        }}>
-                    {answers.mpd?.value === 'tetraplegia' && <CheckIcon/>} {i18n.t('q4d')}
-                </Button>
-                <Button style={{marginBottom: 15}}
-                        contentStyle={{...styles.buttonStyle, borderColor: answers.mpd?.value === 'inna' ? '#3C69E7' : '#000'}}
-                        color={answers.mpd?.value === 'inna' ? "#3C69E7" : "#262626"}
-                        mode="outlined"
-                        onPress={() => {
-                            selectAnswer('mpd', { value: 'inna', 'dl': false })
-                            setDisplayAlert(null)
-                        }}>
-                    {answers.mpd?.value === 'inna' && <CheckIcon/>} {i18n.t('q4e')}
-                </Button>
+                <TouchableOpacity style={{
+                    ...styles.buttonStyle,
+                    borderColor: answers.mpd?.value === 'hemiparetyczna' ? '#3C69E7' : '#000'
+                }} onPress={() => {
+                    selectAnswer('mpd', { value: 'hemiparetyczna', 'dl': false })
+                    setDisplayAlert(null)
+                }}>
+                    <Text style={{ ...styles.buttonTextStyle, color: answers.mpd?.value === 'hemiparetyczna' ? "#3C69E7" : "#262626" }}>
+                        {answers.mpd?.value === 'hemiparetyczna' && <CheckIcon/>} {i18n.t('q4b')}
+                    </Text>
+                </TouchableOpacity>
+
+
+                <TouchableOpacity style={{
+                    ...styles.buttonStyle,
+                    borderColor: answers.mpd?.value === 'diplegia' ? '#3C69E7' : '#000'
+                }} onPress={() => {
+                    selectAnswer('mpd', { value: 'diplegia', 'dl': false })
+                    setDisplayAlert(null)
+                }}>
+                    <Text style={{ ...styles.buttonTextStyle, color: answers.mpd?.value === 'diplegia' ? "#3C69E7" : "#262626" }}>
+                        {answers.mpd?.value === 'diplegia' && <CheckIcon/>} {i18n.t('q4c')}
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{
+                    ...styles.buttonStyle,
+                    borderColor: answers.mpd?.value === 'tetraplegia' ? '#3C69E7' : '#000'
+                }} onPress={() => {
+                    selectAnswer('mpd', { value: 'tetraplegia', 'dl': false })
+                    setDisplayAlert(null)
+                }}>
+                    <Text style={{ ...styles.buttonTextStyle, color: answers.mpd?.value === 'tetraplegia' ? "#3C69E7" : "#262626" }}>
+                        {answers.mpd?.value === 'tetraplegia' && <CheckIcon/>} {i18n.t('q4d')}
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{
+                    ...styles.buttonStyle,
+                    borderColor: answers.mpd?.value === 'inna' ? '#3C69E7' : '#000'
+                }} onPress={() => {
+                    selectAnswer('mpd', { value: 'inna', 'dl': false })
+                    setDisplayAlert(null)
+                }}>
+                    <Text style={{ ...styles.buttonTextStyle, color: answers.mpd?.value === 'inna' ? "#3C69E7" : "#262626" }}>
+                        {answers.mpd?.value === 'inna' && <CheckIcon/>} {i18n.t('q4e')}
+                    </Text>
+                </TouchableOpacity>
+
 
                 <View onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.mpd?.value === 'brak' ? '#ff4d4f' : '#000'}}
-                            color={answers.mpd?.value === 'brak' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('mpd', { value: 'brak', 'dl': true })
-                                setDisplayAlert(1)
-                            }}>
-                        {answers.mpd?.value === 'brak' && <CheckIcon/>} {i18n.t('q4f')}
-                    </Button>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.mpd?.value === 'brak' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('mpd', { value: 'brak', 'dl': true })
+                        setDisplayAlert(1)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.mpd?.value === 'brak' ? "#3C69E7" : "#262626" }}>
+                            {answers.mpd?.value === 'brak' && <CheckIcon/>} {i18n.t('q4f')}
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
 
 
@@ -163,6 +176,11 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         display: 'flex',
         justifyContent: 'center',
+        marginBottom: 15
+    },
+    buttonTextStyle: {
+        textAlign: 'center',
+        textTransform: 'uppercase'
     },
     question: {
         fontSize: 20,

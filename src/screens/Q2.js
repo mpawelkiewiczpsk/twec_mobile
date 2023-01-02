@@ -3,7 +3,7 @@ import { useQuestionsContext } from "../contexts/questions";
 import CheckIcon from "../components/CheckIcon";
 import {Ionicons} from "@expo/vector-icons";
 import {useEffect, useState} from "react";
-import { ProgressBar, Button } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 import i18n from '../i18n-config'
 import {OverlayAlert, OverlayAlertHeight} from "../components/OverlayAlert";
 import {checkValues} from "../helpers/checkValues";
@@ -84,98 +84,121 @@ export default function Q2({ navigation }) {
                 <ScrollView onScroll={event => {setViewScroll(event.nativeEvent.contentOffset.y)}} showsVerticalScrollIndicator={false}>
                 <Text style={styles.question}>{i18n.t('q2a')}</Text>
                 <Text style={styles.question} >{i18n.t('lll')}</Text>
-                <View style={styles.btnGroup} onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q5?.value === '<=' ? '#3C69E7' : '#000'}}
-                            color={answers.q5?.value === '<=' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q5', { value: '<=', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.q5?.value === '<=' && <CheckIcon/>} &lt;= 6
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q5?.value === '>' ? '#ff4d4f' : '#000'}}
-                            color={answers.q5?.value === '>' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q5', { value: '>', 'dl': true })
-                                setDisplayAlert(1)
-                            }}>
-                        {answers.q5?.value === '>' && <CheckIcon/>} > 6
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}} onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q5?.value === '<=' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q5', { value: '<=', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q5?.value === '<=' ? "#3C69E7" : "#262626" }}>
+                            {answers.q5?.value === '<=' && <CheckIcon/>} &lt;= 6
+                        </Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q5?.value === '>' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q5', { value: '>', 'dl': true })
+                        setDisplayAlert(1)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q5?.value === '>' ? "#3C69E7" : "#262626" }}>
+                            {answers.q5?.value === '>' && <CheckIcon/>} > 6
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
                 <Text style={styles.question}>{i18n.t('rll')}</Text>
-                <View style={styles.btnGroup} onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q6?.value === '<=' ? '#3C69E7' : '#000'}}
-                            color={answers.q6?.value === '<=' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q6', { value: '<=', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.q6?.value === '<=' && <CheckIcon/>} &lt;= 6
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q6?.value === '>' ? '#ff4d4f' : '#000'}}
-                            color={answers.q6?.value === '>' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q6', { value: '>', 'dl': true })
-                                setDisplayAlert(2)
-                            }}>
-                        {answers.q6?.value === '>' && <CheckIcon/>} > 6
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}} onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q6?.value === '<=' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q6', { value: '<=', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q6?.value === '<=' ? "#3C69E7" : "#262626" }}>
+                            {answers.q6?.value === '<=' && <CheckIcon/>} &lt;= 6
+                        </Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q6?.value === '>' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q6', { value: '>', 'dl': true })
+                        setDisplayAlert(2)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q6?.value === '>' ? "#3C69E7" : "#262626" }}>
+                            {answers.q6?.value === '>' && <CheckIcon/>} > 6
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
                 <Text style={styles.question}>{i18n.t('q2b')}</Text>
                 <Text style={styles.question}>{i18n.t('lll')}</Text>
 
-                <View style={styles.btnGroup} onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q7?.value === '<=' ? '#3C69E7' : '#000'}}
-                            color={answers.q7?.value === '<=' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q7', { value: '<=', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.q7?.value === '<=' && <CheckIcon/>} &lt;= 12
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q7?.value === '>' ? '#ff4d4f' : '#000'}}
-                            color={answers.q7?.value === '>' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q7', { value: '>', 'dl': true })
-                                setDisplayAlert(3)
-                            }}>
-                        {answers.q7?.value === '>' && <CheckIcon/>} > 12
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}} onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q7?.value === '<=' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q7', { value: '<=', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q7?.value === '<=' ? "#3C69E7" : "#262626" }}>
+                            {answers.q7?.value === '<=' && <CheckIcon/>} &lt;= 12
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q7?.value === '>' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q7', { value: '>', 'dl': true })
+                        setDisplayAlert(3)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q7?.value === '>' ? "#3C69E7" : "#262626" }}>
+                            {answers.q7?.value === '>' && <CheckIcon/>} > 12
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
                 <Text style={styles.question}>{i18n.t('rll')}</Text>
-                <View style={styles.btnGroup} onLayout={event => {setPosY3(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q8?.value === '<=' ? '#3C69E7' : '#000'}}
-                            color={answers.q8?.value === '<=' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q8', { value: '<=', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.q8?.value === '<=' && <CheckIcon/>} &lt;= 12
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q8?.value === '>' ? '#ff4d4f' : '#000'}}
-                            color={answers.q8?.value === '>' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q8', { value: '>', 'dl': true })
-                                setDisplayAlert(4)
-                            }}>
-                        {answers.q8?.value === '>' && <CheckIcon/>} > 12
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15 }} onLayout={event => {setPosY3(event.nativeEvent.layout.y);}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q8?.value === '<=' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q8', { value: '<=', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q8?.value === '<=' ? "#3C69E7" : "#262626" }}>
+                            {answers.q8?.value === '<=' && <CheckIcon/>} &lt;= 12
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q8?.value === '>' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q8', { value: '>', 'dl': true })
+                        setDisplayAlert(4)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q8?.value === '>' ? "#3C69E7" : "#262626" }}>
+                            {answers.q8?.value === '>' && <CheckIcon/>} > 12
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
                 </ScrollView>
             </View>
@@ -215,6 +238,10 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         display: 'flex',
         justifyContent: 'center',
+    },
+    buttonTextStyle: {
+        textAlign: 'center',
+        textTransform: 'uppercase'
     },
     question: {
         fontSize: 20,

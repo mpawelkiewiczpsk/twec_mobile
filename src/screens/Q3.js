@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TouchableOpacity} from 'react-native';
-import { ProgressBar, Button } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 import { useQuestionsContext } from "../contexts/questions";
 import {Ionicons} from "@expo/vector-icons";
 import CheckIcon from "../components/CheckIcon";
@@ -82,73 +82,91 @@ export default function Q3({ navigation }) {
             <View style={{flex:9}} onLayout={event => {setViewOffset(event.nativeEvent.layout.y);}}>
                 <Text style={styles.question}>{i18n.t('q3a')}</Text>
                 <Text style={styles.question}>{i18n.t('q3b')}</Text>
-                <View style={styles.btnGroup} onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q9?.value === 'tak' ? '#3C69E7' : '#000'}}
-                            color={answers.q9?.value === 'tak' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q9', { value: 'tak', 'de': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.q9?.value === 'tak' && <CheckIcon/>} {i18n.t('yes')}
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{ ...styles.buttonStyle, borderColor: answers.q9?.value === 'nie' ? '#ff4d4f' : '#000'}}
-                            color={answers.q9?.value === 'nie' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q9', { value: 'nie', 'de': true })
-                                setDisplayAlert(1)
-                            }}>
-                        {answers.q9?.value === 'nie' && <CheckIcon/>} {i18n.t('no')}
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}} onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q9?.value === 'tak' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q9', { value: 'tak', 'de': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q9?.value === 'tak' ? "#3C69E7" : "#262626" }}>
+                            {answers.q9?.value === 'tak' && <CheckIcon/>} {i18n.t('yes')}
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q9?.value === 'nie' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q9', { value: 'nie', 'de': true })
+                        setDisplayAlert(1)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q9?.value === 'nie' ? "#3C69E7" : "#262626" }}>
+                            {answers.q9?.value === 'nie' && <CheckIcon/>} {i18n.t('no')}
+                        </Text>
+                    </TouchableOpacity>
+
+
                 </View>
                 <Text style={styles.question}>{i18n.t('q3c')}</Text>
-                <View style={styles.btnGroup} onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q10?.value === 'tak' ? '#3C69E7' : '#000'}}
-                            color={answers.q10?.value === 'tak' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q10', { value: 'tak', 'db': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.q10?.value === 'tak' && <CheckIcon/>} {i18n.t('yes')}
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{ ...styles.buttonStyle, borderColor: answers.q10?.value === 'nie' ? '#ff4d4f' : '#000'}}
-                            color={answers.q10?.value === 'nie' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q10', { value: 'nie', 'db': true })
-                                setDisplayAlert(2)
-                            }}>
-                        {answers.q10?.value === 'nie' && <CheckIcon/>} {i18n.t('no')}
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}} onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q10?.value === 'tak' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q10', { value: 'tak', 'db': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q10?.value === 'tak' ? "#3C69E7" : "#262626" }}>
+                            {answers.q10?.value === 'tak' && <CheckIcon/>} {i18n.t('yes')}
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q10?.value === 'nie' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q10', { value: 'nie', 'db': true })
+                        setDisplayAlert(2)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q10?.value === 'nie' ? "#3C69E7" : "#262626" }}>
+                            {answers.q10?.value === 'nie' && <CheckIcon/>} {i18n.t('no')}
+                        </Text>
+                    </TouchableOpacity>
+
+
                 </View>
                 <Text style={styles.question}>{i18n.t('q3d')}</Text>
-                <View style={styles.btnGroup} onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q11?.value === 'tak' ? '#3C69E7' : '#000'}}
-                            color={answers.q11?.value === 'tak' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q11', { value: 'tak', 'dp': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.q11?.value === 'tak' && <CheckIcon/>} {i18n.t('yes')}
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{ ...styles.buttonStyle, borderColor: answers.q11?.value === 'nie' ? '#ff4d4f' : '#000'}}
-                            color={answers.q11?.value === 'nie' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('q11', { value: 'nie', 'dp': true })
-                                setDisplayAlert(3)
-                            }}>
-                        {answers.q11?.value === 'nie' && <CheckIcon/>} {i18n.t('no')}
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}} onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q11?.value === 'tak' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q11', { value: 'tak', 'dp': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q11?.value === 'tak' ? "#3C69E7" : "#262626" }}>
+                            {answers.q11?.value === 'tak' && <CheckIcon/>} {i18n.t('yes')}
+                        </Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q11?.value === 'nie' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('q11', { value: 'nie', 'dp': true })
+                        setDisplayAlert(3)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q11?.value === 'nie' ? "#3C69E7" : "#262626" }}>
+                            {answers.q11?.value === 'nie' && <CheckIcon/>} {i18n.t('no')}
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View style={{flex:1, marginTop: 15, marginBottom: 15}}>
@@ -186,6 +204,10 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         display: 'flex',
         justifyContent: 'center',
+    },
+    buttonTextStyle: {
+        textAlign: 'center',
+        textTransform: 'uppercase'
     },
     question: {
         fontSize: 20,

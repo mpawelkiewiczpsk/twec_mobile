@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TouchableOpacity, ScrollView} from 'react-native';
-import { ProgressBar, Button } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 import CheckIcon from "../components/CheckIcon";
 import {Ionicons} from "@expo/vector-icons";
 import {useQuestionsContext} from "../contexts/questions";
@@ -82,108 +82,136 @@ export default function Q5({ navigation }) {
                 <ScrollView onScroll={event => {setViewScroll(event.nativeEvent.contentOffset.y)}} showsVerticalScrollIndicator={false}>
                 <Text style={styles.question}>{i18n.t('q5a')}</Text>
                 <View style={styles.btnGroup2}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle2, borderColor: answers.kind?.value === 'spastyczna' ? '#3C69E7' : '#000'}}
-                            color={answers.kind?.value === 'spastyczna' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('kind', { value: 'spastyczna', 'dl': false });
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.kind?.value === 'spastyczna' && <CheckIcon/>} {i18n.t('q5b')}
-                    </Button>
 
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle2, borderColor: answers.kind?.value === 'mieszana' ? '#3C69E7' : '#000'}}
-                            color={answers.kind?.value === 'mieszana' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('kind', { value: 'mieszana', 'dl': false });
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.kind?.value === 'mieszana' && <CheckIcon/>} {i18n.t('q5c')}
-                    </Button>
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle2,
+                        borderColor: answers.kind?.value === 'spastyczna' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('kind', { value: 'spastyczna', 'dl': false });
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.kind?.value === 'spastyczna' ? "#3C69E7" : "#262626" }}>
+                            {answers.kind?.value === 'spastyczna' && <CheckIcon/>} {i18n.t('q5b')}
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle2,
+                        borderColor: answers.kind?.value === 'mieszana' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('kind', { value: 'mieszana', 'dl': false });
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.kind?.value === 'mieszana' ? "#3C69E7" : "#262626" }}>
+                            {answers.kind?.value === 'mieszana' && <CheckIcon/>} {i18n.t('q5c')}
+                        </Text>
+                    </TouchableOpacity>
+
 
                 </View>
                 <View style={styles.btnGroup2} onLayout={event => {setPosY0(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle2, borderColor: answers.kind?.value === 'brak' ? '#ff4d4f' : '#000'}}
-                            color={answers.kind?.value === 'brak' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('kind', { value: 'brak', 'dl': true });
-                                setDisplayAlert(1)
-                            }}>
-                        {answers.kind?.value === 'brak' && <CheckIcon/>} {i18n.t('q5d')}
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle2, borderColor: answers.kind?.value === 'inna' ? '#3C69E7' : '#000'}}
-                            color={answers.kind?.value === 'inna' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('kind', { value: 'inna', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.kind?.value === 'inna' && <CheckIcon/>} {i18n.t('q5e')}
-                    </Button>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle2,
+                        borderColor: answers.kind?.value === 'brak' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('kind', { value: 'brak', 'dl': true });
+                        setDisplayAlert(1)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.kind?.value === 'brak' ? "#3C69E7" : "#262626" }}>
+                            {answers.kind?.value === 'brak' && <CheckIcon/>} {i18n.t('q5d')}
+                        </Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle2,
+                        borderColor: answers.kind?.value === 'inna' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('kind', { value: 'inna', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.kind?.value === 'inna' ? "#3C69E7" : "#262626" }}>
+                            {answers.kind?.value === 'inna' && <CheckIcon/>} {i18n.t('q5e')}
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
 
                 <Text style={styles.question}>{i18n.t('q5f')}</Text>
-                <View style={styles.btnGroup}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.gmfcs?.value === 'I' ? '#3C69E7' : '#000'}}
-                            color={answers.gmfcs?.value === 'I' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('gmfcs', { value: 'I', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.gmfcs?.value === 'I' && <CheckIcon/>} I
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.gmfcs?.value === 'II' ? '#3C69E7' : '#000'}}
-                            color={answers.gmfcs?.value === 'II' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('gmfcs', { value: 'II', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.gmfcs?.value === 'II' && <CheckIcon/>} II
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.gmfcs?.value === 'I' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('gmfcs', { value: 'I', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.gmfcs?.value === 'I' ? "#3C69E7" : "#262626" }}>
+                            {answers.gmfcs?.value === 'I' && <CheckIcon/>} I
+                        </Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.gmfcs?.value === 'II' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('gmfcs', { value: 'II', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.gmfcs?.value === 'II' ? "#3C69E7" : "#262626" }}>
+                            {answers.gmfcs?.value === 'II' && <CheckIcon/>} II
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
-                <View style={styles.btnGroup} onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.gmfcs?.value === 'III' ? '#3C69E7' : '#000'}}
-                            color={answers.gmfcs?.value === 'III' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('gmfcs', { value: 'III', 'dl': false })
-                                setDisplayAlert(null)
-                            }}>
-                        {answers.gmfcs?.value === 'III' && <CheckIcon/>} III
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.gmfcs?.value === 'IV' ? '#ff4d4f' : '#000'}}
-                            color={answers.gmfcs?.value === 'IV' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('gmfcs', { value: 'IV', 'dl': true })
-                                setDisplayAlert(3)
-                            }}>
-                        {answers.gmfcs?.value === 'IV' && <CheckIcon/>} IV
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}} onLayout={event => {setPosY2(event.nativeEvent.layout.y);}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.gmfcs?.value === 'III' ? '#3C69E7' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('gmfcs', { value: 'III', 'dl': false })
+                        setDisplayAlert(null)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.gmfcs?.value === 'III' ? "#3C69E7" : "#262626" }}>
+                            {answers.gmfcs?.value === 'III' && <CheckIcon/>} III
+                        </Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.gmfcs?.value === 'IV' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('gmfcs', { value: 'IV', 'dl': true })
+                        setDisplayAlert(3)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.gmfcs?.value === 'IV' ? "#3C69E7" : "#262626" }}>
+                            {answers.gmfcs?.value === 'IV' && <CheckIcon/>} IV
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
                 <View onLayout={event => {setPosY1(event.nativeEvent.layout.y);}}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, width: windowWidth - 50, borderColor: answers.gmfcs?.value === 'V' ? '#ff4d4f' : '#000'}}
-                            color={answers.gmfcs?.value === 'V' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => {
-                                selectAnswer('gmfcs', { value: 'V', 'dl': true })
-                                setDisplayAlert(2)
-                            }}>
-                        {answers.gmfcs?.value === 'V' && <CheckIcon/>} V
-                    </Button>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        width: windowWidth - 50,
+                        borderColor: answers.gmfcs?.value === 'V' ? '#ff4d4f' : '#000'
+                    }} onPress={() => {
+                        selectAnswer('gmfcs', { value: 'V', 'dl': true })
+                        setDisplayAlert(2)
+                    }}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.gmfcs?.value === 'V' ? "#3C69E7" : "#262626" }}>
+                            {answers.gmfcs?.value === 'V' && <CheckIcon/>} V
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
                     </ScrollView>
             </View>
@@ -223,6 +251,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
     },
+    buttonTextStyle: {
+        textAlign: 'center',
+        textTransform: 'uppercase'
+    },
     buttonStyle2: {
         width: windowWidth - 50,
         height: 50,
@@ -230,6 +262,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         display: 'flex',
         justifyContent: 'center',
+        marginBottom: 15
     },
     question: {
         fontSize: 20,

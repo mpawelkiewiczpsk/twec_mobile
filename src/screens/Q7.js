@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Dimensions, SafeAreaView, Platform, StatusBar, TouchableOpacity} from 'react-native';
-import { ProgressBar, Button } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 import {useQuestionsContext} from "../contexts/questions";
 import CheckIcon from "../components/CheckIcon";
 import {Ionicons} from "@expo/vector-icons";
@@ -24,7 +24,7 @@ export default function Q7({ navigation }) {
 
     useEffect(() => {
 
-        setIsDisabled(!answers.q12 || !answers.gmfcs)
+        setIsDisabled(!answers.q12 || !answers.q13)
 
     }, [answers])
 
@@ -38,37 +38,52 @@ export default function Q7({ navigation }) {
             <View style={{flex:9}}>
                 <Text style={styles.question}>{i18n.t('q7a')}</Text>
                 <View>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, width: windowWidth - 50, borderColor: answers.q12 === 'od pięty' ? '#3C69E7' : '#000'}}
-                            color={answers.q12 === 'od pięty' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => selectAnswer('q12', 'od pięty')}>
-                        {answers.q12 === 'od pięty' && <CheckIcon/>} {i18n.t('q7b')}
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, width: windowWidth - 50, borderColor: answers.q12 === 'inaczej' ? '#3C69E7' : '#000'}}
-                            color={answers.q12 === 'inaczej' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => selectAnswer('q12', 'inaczej')}>
-                        {answers.q12 === 'inaczej' && <CheckIcon/>} {i18n.t('q7c')}
-                    </Button>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        width: windowWidth - 50,
+                        marginBottom: 15,
+                        borderColor: answers.q12 === 'od pięty' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('q12', 'od pięty')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q12 === 'od pięty' ? "#3C69E7" : "#262626" }}>
+                            {answers.q12 === 'od pięty' && <CheckIcon/>} {i18n.t('q7b')}
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        width: windowWidth - 50,
+                        marginBottom: 15,
+                        borderColor: answers.q12 === 'inaczej' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('q12', 'inaczej')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q12 === 'inaczej' ? "#3C69E7" : "#262626" }}>
+                            {answers.q12 === 'inaczej' && <CheckIcon/>} {i18n.t('q7c')}
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
                 <Text style={styles.question}>{i18n.t('q7d')}</Text>
-                <View style={styles.btnGroup}>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q13 === 'tak' ? '#3C69E7' : '#000'}}
-                            color={answers.q13 === 'tak' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => selectAnswer('q13', 'tak')}>
-                        {answers.q13 === 'tak' && <CheckIcon/>} {i18n.t('yes')}
-                    </Button>
-                    <Button style={{marginBottom: 15}}
-                            contentStyle={{...styles.buttonStyle, borderColor: answers.q13 === 'nie' ? '#3C69E7' : '#000'}}
-                            color={answers.q13 === 'nie' ? "#3C69E7" : "#262626"}
-                            mode="outlined"
-                            onPress={() => selectAnswer('q13', 'nie')}>
-                        {answers.q13 === 'nie' && <CheckIcon/>} {i18n.t('no')}
-                    </Button>
+                <View style={{...styles.btnGroup, marginBottom: 15}}>
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q13 === 'tak' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('q13', 'tak')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q13 === 'tak' ? "#3C69E7" : "#262626" }}>
+                            {answers.q13 === 'tak' && <CheckIcon/>} {i18n.t('yes')}
+                        </Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity style={{
+                        ...styles.buttonStyle,
+                        borderColor: answers.q13 === 'nie' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('q13', 'nie')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.q13 === 'nie' ? "#3C69E7" : "#262626" }}>
+                            {answers.q13 === 'nie' && <CheckIcon/>} {i18n.t('no')}
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
 
             </View>
@@ -107,6 +122,10 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         display: 'flex',
         justifyContent: 'center',
+    },
+    buttonTextStyle: {
+        textAlign: 'center',
+        textTransform: 'uppercase'
     },
     question: {
         fontSize: 20,
