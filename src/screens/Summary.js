@@ -17,6 +17,8 @@ import { useQuestionsContext } from "../contexts/questions";
 import {useEffect, useRef, useState} from "react";
 import i18n from '../i18n-config'
 import {Easing} from "react-native-web";
+import {patientData} from "../algorithm/parsePatientData";
+import {calculateStratificationForPerTherapy} from "../algorithm/stratificationByTherapy";
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -255,7 +257,7 @@ const getColour = (value) => {
 const LeftContent = props => <Avatar.Icon color='#B5BAC8' backgroundColor='transparent' {...props} icon="timer" size={40}/>
 
 function Summary({ navigation }) {
-    const { removeAllAnswers } = useQuestionsContext();
+    const { answers, removeAllAnswers } = useQuestionsContext();
     const [modalVisible, setModalVisible] = useState(false);
     const [pickedTherapyId, setPickedTherapyId] = useState(0);
     const [therapyList, setTherapyList] = useState(therapyListPL);
@@ -266,11 +268,37 @@ function Summary({ navigation }) {
         showModal();
     }
 
+    let therapyTmp = [];
+
+
+    const compareFn = (a, b) => {
+        if (a.value < b.value) {
+            return -1;
+        }
+        if (a.value > b.value) {
+            return 1;
+        }
+        return 0;
+    }
+
     useEffect(() => {
 
         if(i18n.locale === 'en') setTherapyList(therapyListEN)
 
+
+        therapyTmp = therapyList;
+        therapyTmp[0].value = calculateStratificationForPerTherapy('Ekso', patientData(answers)) / 100
+        therapyTmp[1].value = calculateStratificationForPerTherapy('Bieżnia + Platformy', patientData(answers)) / 100
+        therapyTmp[2].value = calculateStratificationForPerTherapy('Ekso + Platformy', patientData(answers)) / 100
+
+
+
+        setTherapyList(therapyTmp.sort(compareFn).reverse())
+
+
     }, [])
+
+
 
     const backToHome = () => {
         removeAllAnswers();

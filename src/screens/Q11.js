@@ -31,10 +31,10 @@ export default function Q11({ navigation }) {
 
     useEffect(() => {
 
-        setIsDisabled(!allValues.includes(answers.q18) ||
-            !allValues.includes(answers.q19) ||
-            !allValues.includes(answers.q20) ||
-            !allValues.includes(answers.q21))
+        setIsDisabled(!allValues.includes(answers.silaLovettProstownikBiodroLKD) ||
+            !allValues.includes(answers.silaLovettProstownikBiodroPKD) ||
+            !allValues.includes(answers.silaLovettProstownikKolanoLKD) ||
+            !allValues.includes(answers.silaLovettProstownikKolanoPKD))
 
     }, [answers])
 
@@ -59,8 +59,8 @@ export default function Q11({ navigation }) {
                         <Text style={styles.question}>{i18n.t('lll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q18: value  })}
-                                value={answers.q18}
+                                onValueChange={(value) => setAnswers({ ...answers, silaLovettProstownikBiodroLKD: value  })}
+                                value={answers.silaLovettProstownikBiodroLKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}
@@ -71,8 +71,8 @@ export default function Q11({ navigation }) {
                         <Text style={styles.question}>{i18n.t('rll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q19: value  })}
-                                value={answers.q19}
+                                onValueChange={(value) => setAnswers({ ...answers, silaLovettProstownikBiodroPKD: value  })}
+                                value={answers.silaLovettProstownikBiodroPKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}
@@ -88,8 +88,8 @@ export default function Q11({ navigation }) {
                         <Text style={styles.question}>{i18n.t('lll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q20: value  })}
-                                value={answers.q20}
+                                onValueChange={(value) => setAnswers({ ...answers, silaLovettProstownikKolanoLKD: value  })}
+                                value={answers.silaLovettProstownikKolanoLKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}
@@ -100,8 +100,8 @@ export default function Q11({ navigation }) {
                         <Text style={styles.question}>{i18n.t('rll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q21: value  })}
-                                value={answers.q21}
+                                onValueChange={(value) => setAnswers({ ...answers, silaLovettProstownikKolanoPKD: value  })}
+                                value={answers.silaLovettProstownikKolanoPKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}

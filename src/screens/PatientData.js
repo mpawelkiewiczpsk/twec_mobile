@@ -85,7 +85,9 @@ export default function PatientData({ navigation }) {
         if(answers.weight.value && answers.height.value){
             let bmi = answers.weight.value / ((answers.height.value / 100) * (answers.height.value / 100))
 
+
             setBmi(bmi.toFixed(2).toString());
+            setAnswers({ ...answers, bmi: bmi.toFixed(2).toString() });
         }
 
     },[answers.height, answers.weight])

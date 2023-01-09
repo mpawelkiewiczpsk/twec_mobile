@@ -27,15 +27,13 @@ const placeholder = {
 export default function Q12({ navigation }) {
     const { answers, setAnswers } = useQuestionsContext();
     const [isDisabled, setIsDisabled] = useState(false);
-    const [tooltip1, setTooltip1] = useState(false);
-    const [tooltip2, setTooltip2] = useState(false);
 
     useEffect(() => {
 
-        setIsDisabled(!allValues.includes(answers.q22) ||
-            !allValues.includes(answers.q23) ||
-            !allValues.includes(answers.q24) ||
-            !allValues.includes(answers.q25))
+        setIsDisabled(!allValues.includes(answers.selektywnoscZginaczBiodroLKD) ||
+            !allValues.includes(answers.selektywnoscZginaczBiodroPKD) ||
+            !allValues.includes(answers.selektywnoscZginaczKolanoLKD) ||
+            !allValues.includes(answers.selektywnoscZginaczKolanoPKD))
 
     }, [answers])
 
@@ -76,8 +74,8 @@ export default function Q12({ navigation }) {
                         <Text style={styles.question}>{i18n.t('lll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q22: value  })}
-                                value={answers.q22}
+                                onValueChange={(value) => setAnswers({ ...answers, selektywnoscZginaczBiodroLKD: value  })}
+                                value={answers.selektywnoscZginaczBiodroLKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}
@@ -88,8 +86,8 @@ export default function Q12({ navigation }) {
                         <Text style={styles.question}>{i18n.t('rll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q23: value  })}
-                                value={answers.q23}
+                                onValueChange={(value) => setAnswers({ ...answers, selektywnoscZginaczBiodroPKD: value  })}
+                                value={answers.selektywnoscZginaczBiodroPKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}
@@ -116,8 +114,8 @@ export default function Q12({ navigation }) {
                         <Text style={styles.question}>{i18n.t('lll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q24: value  })}
-                                value={answers.q24}
+                                onValueChange={(value) => setAnswers({ ...answers, selektywnoscZginaczKolanoLKD: value  })}
+                                value={answers.selektywnoscZginaczKolanoLKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}
@@ -128,8 +126,8 @@ export default function Q12({ navigation }) {
                         <Text style={styles.question}>{i18n.t('rll')}</Text>
                         <View style={{borderWidth: 1, borderColor: 'gray', borderRadius: 10}}>
                             <RNPickerSelect
-                                onValueChange={(value) => setAnswers({ ...answers, q25: value  })}
-                                value={answers.q25}
+                                onValueChange={(value) => setAnswers({ ...answers, selektywnoscZginaczKolanoPKD: value  })}
+                                value={answers.selektywnoscZginaczKolanoPKD}
                                 placeholder={placeholder}
                                 items={selectValues}
                                 style={pickerSelectStyles}

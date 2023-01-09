@@ -24,7 +24,7 @@ export default function Q7({ navigation }) {
 
     useEffect(() => {
 
-        setIsDisabled(!answers.q12 || !answers.q13)
+        setIsDisabled(!answers.kontaktStopa || !answers.toksynaBotulinowa)
 
     }, [answers])
 
@@ -43,10 +43,10 @@ export default function Q7({ navigation }) {
                         ...styles.buttonStyle,
                         width: windowWidth - 50,
                         marginBottom: 15,
-                        borderColor: answers.q12 === 'od pięty' ? '#3C69E7' : '#000'
-                    }} onPress={() => selectAnswer('q12', 'od pięty')}>
-                        <Text style={{ ...styles.buttonTextStyle, color: answers.q12 === 'od pięty' ? "#3C69E7" : "#262626" }}>
-                            {answers.q12 === 'od pięty' && <CheckIcon/>} {i18n.t('q7b')}
+                        borderColor: answers.kontaktStopa === 'od pięty' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('kontaktStopa', 'od pięty')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.kontaktStopa === 'od pięty' ? "#3C69E7" : "#262626" }}>
+                            {answers.kontaktStopa === 'od pięty' && <CheckIcon/>} {i18n.t('q7b')}
                         </Text>
                     </TouchableOpacity>
 
@@ -54,10 +54,10 @@ export default function Q7({ navigation }) {
                         ...styles.buttonStyle,
                         width: windowWidth - 50,
                         marginBottom: 15,
-                        borderColor: answers.q12 === 'inaczej' ? '#3C69E7' : '#000'
-                    }} onPress={() => selectAnswer('q12', 'inaczej')}>
-                        <Text style={{ ...styles.buttonTextStyle, color: answers.q12 === 'inaczej' ? "#3C69E7" : "#262626" }}>
-                            {answers.q12 === 'inaczej' && <CheckIcon/>} {i18n.t('q7c')}
+                        borderColor: answers.kontaktStopa === 'inaczej' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('kontaktStopa', 'inaczej')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.kontaktStopa === 'inaczej' ? "#3C69E7" : "#262626" }}>
+                            {answers.kontaktStopa === 'inaczej' && <CheckIcon/>} {i18n.t('q7c')}
                         </Text>
                     </TouchableOpacity>
 
@@ -67,20 +67,20 @@ export default function Q7({ navigation }) {
 
                     <TouchableOpacity style={{
                         ...styles.buttonStyle,
-                        borderColor: answers.q13 === 'tak' ? '#3C69E7' : '#000'
-                    }} onPress={() => selectAnswer('q13', 'tak')}>
-                        <Text style={{ ...styles.buttonTextStyle, color: answers.q13 === 'tak' ? "#3C69E7" : "#262626" }}>
-                            {answers.q13 === 'tak' && <CheckIcon/>} {i18n.t('yes')}
+                        borderColor: answers.toksynaBotulinowa === 'tak' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('toksynaBotulinowa', 'tak')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.toksynaBotulinowa === 'tak' ? "#3C69E7" : "#262626" }}>
+                            {answers.toksynaBotulinowa === 'tak' && <CheckIcon/>} {i18n.t('yes')}
                         </Text>
                     </TouchableOpacity>
 
 
                     <TouchableOpacity style={{
                         ...styles.buttonStyle,
-                        borderColor: answers.q13 === 'nie' ? '#3C69E7' : '#000'
-                    }} onPress={() => selectAnswer('q13', 'nie')}>
-                        <Text style={{ ...styles.buttonTextStyle, color: answers.q13 === 'nie' ? "#3C69E7" : "#262626" }}>
-                            {answers.q13 === 'nie' && <CheckIcon/>} {i18n.t('no')}
+                        borderColor: answers.toksynaBotulinowa === 'nie' ? '#3C69E7' : '#000'
+                    }} onPress={() => selectAnswer('toksynaBotulinowa', 'nie')}>
+                        <Text style={{ ...styles.buttonTextStyle, color: answers.toksynaBotulinowa === 'nie' ? "#3C69E7" : "#262626" }}>
+                            {answers.toksynaBotulinowa === 'nie' && <CheckIcon/>} {i18n.t('no')}
                         </Text>
                     </TouchableOpacity>
 
