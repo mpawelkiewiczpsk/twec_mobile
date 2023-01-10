@@ -19,6 +19,7 @@ import i18n from '../i18n-config'
 import {Easing} from "react-native-web";
 import {patientData} from "../algorithm/parsePatientData";
 import {calculateStratificationForPerTherapy} from "../algorithm/stratificationByTherapy";
+import {checkValuesForTherapy} from "../helpers/checkValues";
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -265,6 +266,7 @@ const LeftContent = props => <Avatar.Icon color='#B5BAC8' backgroundColor='trans
 function Summary({ navigation }) {
     const { answers, removeAllAnswers } = useQuestionsContext();
     const [modalVisible, setModalVisible] = useState(false);
+    const [therapyOff, setTherapyOff] = useState(null);
     const [pickedTherapyId, setPickedTherapyId] = useState(0);
     const [therapyList, setTherapyList] = useState(therapyListPL);
     const [loadTherapy, setLoadTherapy] = useState(false)
@@ -292,34 +294,43 @@ function Summary({ navigation }) {
 
         if(i18n.locale === 'en') setTherapyList(therapyListEN)
 
-        therapyTmp = therapyList;
-        therapyTmp[0].value = calculateStratificationForPerTherapy('Ekso', patientData(answers)) / 100
-        therapyTmp[0].visible = !answers.de
-        therapyTmp[1].value = calculateStratificationForPerTherapy('Bieżnia + Platformy', patientData(answers)) / 100
-        therapyTmp[1].visible = !answers.dp && !answers.db
-        therapyTmp[2].value = calculateStratificationForPerTherapy('Ekso + Platformy', patientData(answers)) / 100
-        therapyTmp[2].visible = !answers.de && !answers.dp
-
-        setTherapyList(therapyTmp.sort(compareFn).reverse())
-
+        setTherapyOff(checkValuesForTherapy(answers))
 
     }, [])
 
     useEffect(() => {
 
-        if(therapyList[0].value !== 0.1 && therapyList[1].value !== 0.1 && therapyList[2].value !== 0.1){
-            setLoadTherapy(true)
+        if(therapyOff){
+
+            therapyTmp = therapyList;
+            therapyTmp[0].value = calculateStratificationForPerTherapy('Ekso', patientData(answers)) / 100
+            therapyTmp[0].visible = !therapyOff.de
+            therapyTmp[1].value = calculateStratificationForPerTherapy('Bieżnia + Platformy', patientData(answers)) / 100
+            therapyTmp[1].visible = !therapyOff.dp && !therapyOff.db
+            therapyTmp[2].value = calculateStratificationForPerTherapy('Ekso + Platformy', patientData(answers)) / 100
+            therapyTmp[2].visible = !therapyOff.de && !therapyOff.dp
+
+            setTherapyList(therapyTmp.sort(compareFn).reverse())
         }
 
+    }, [therapyOff])
 
-    }, [therapyList])
+    useEffect(() => {
+
+       if(therapyList[0].value !== 0.1 && therapyList[1].value !== 0.1 && therapyList[2].value !== 0.1){
+           setLoadTherapy(true)
+       }
+
+
+
+    }, [therapyList, therapyOff])
 
 
 
 
     const backToHome = () => {
-        removeAllAnswers();
-        navigation.replace('Home')
+        // removeAllAnswers();
+        navigation.replace('Q15')
     }
 
     return (
@@ -358,7 +369,7 @@ function Summary({ navigation }) {
                         ) : null)}
 
                         {
-                            answers.de && answers.dp ?
+                            therapyOff?.de && therapyOff?.dp ?
                                 <View>
                                     <Text style={{ fontWeight: 'bold', fontSize: 20 }}>
                                         {i18n.t('noTherapy')}
