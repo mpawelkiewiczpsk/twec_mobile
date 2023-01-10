@@ -26,8 +26,9 @@ const therapyListPL = [
     {
         id: 0,
         name: 'Egzoszkielet',
-        value: 0.87,
+        value: 0.1,
         time: '70 minut',
+        visible: true,
         description: [
             '1.trening na urządzeniach Telko i Jupiter łącznie 20 minut,',
             '2. trening Ekso 30-40 minut,',
@@ -37,8 +38,9 @@ const therapyListPL = [
     {
         id: 1,
         name: 'Bieżnia + Platfromy',
-        value: 0.55,
+        value: 0.1,
         time: '90 minut',
+        visible: true,
         description: [
             '1. trening na urządzeniach Telko i Jupiter łącznie 20 minut,',
             '2. trening Bieżnia 30-40 minut,',
@@ -49,8 +51,9 @@ const therapyListPL = [
     {
         id: 2,
         name: 'Egzoszkielet + Platformy',
-        value: 0.40,
+        value: 0.1,
         time: '90 minut',
+        visible: true,
         description: [
             '1. trening na urządzeniach Telko i Jupiter łącznie 20 minut,',
             '2. trening Ekso 30-40 minut,',
@@ -64,8 +67,9 @@ const therapyListEN = [
     {
         id: 0,
         name: 'The exoskeleton',
-        value: 0.87,
+        value: 0.1,
         time: '70 minutes',
+        visible: true,
         description: [
             '1. training on Telko and Jupiter devices in total 20 minutes,',
             '2. Ekso training 30-40 minutes,',
@@ -75,8 +79,9 @@ const therapyListEN = [
     {
         id: 1,
         name: 'Treadmill + Platforms',
-        value: 0.55,
+        value: 0.1,
         time: '90 minutes',
+        visible: true,
         description: [
             '1. training on Telko and Jupiter devices in total 20 minutes,',
             '2. training Treadmill 30-40 minutes,',
@@ -87,8 +92,9 @@ const therapyListEN = [
     {
         id: 2,
         name: 'Exoskeleton + Platforms',
-        value: 0.40,
+        value: 0.1,
         time: '90 minutes',
+        visible: true,
         description: [
             '1. training on Telko and Jupiter devices in total 20 minutes,',
             '2. Ekso training 30-40 minutes,',
@@ -261,6 +267,7 @@ function Summary({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [pickedTherapyId, setPickedTherapyId] = useState(0);
     const [therapyList, setTherapyList] = useState(therapyListPL);
+    const [loadTherapy, setLoadTherapy] = useState(true)
     const showModal = () => setModalVisible(true);
     const hideModal = () => setModalVisible(false);
     const onTherapy = (therapyId) => {
@@ -288,15 +295,17 @@ function Summary({ navigation }) {
 
         therapyTmp = therapyList;
         therapyTmp[0].value = calculateStratificationForPerTherapy('Ekso', patientData(answers)) / 100
+        therapyTmp[0].visible = !answers.de
         therapyTmp[1].value = calculateStratificationForPerTherapy('Bieżnia + Platformy', patientData(answers)) / 100
+        therapyTmp[1].visible = !answers.dp && !answers.db
         therapyTmp[2].value = calculateStratificationForPerTherapy('Ekso + Platformy', patientData(answers)) / 100
-
-
+        therapyTmp[2].visible = !answers.de && !answers.dp
 
         setTherapyList(therapyTmp.sort(compareFn).reverse())
 
 
     }, [])
+
 
 
 
@@ -315,30 +324,40 @@ function Summary({ navigation }) {
                 </View>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <FadeInView style={styles.summary}>
-                        {therapyList.map((item, index) => (
+                        {therapyList.map((item, index) => item.visible ? (
                             <TouchableOpacity onPress={() => onTherapy(item.id)} key={item.id}>
                                 <Card style={{ marginBottom: 15, backgroundColor: '#fff', opacity: 0.85 }}>
                                     <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems:'flex-start', marginVertical: 20}}>
-                                    <View style={{ justifyContent: 'flex-start', height: '100%', width: '60%'}}>
-                                        <Text style={styles.summaryTitle}>{item.name}</Text>
-                                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                            <LeftContent />
-                                            <Text style={styles.subtitle}>{item.time}</Text>
+                                        <View style={{ justifyContent: 'flex-start', height: '100%', width: '60%'}}>
+                                            <Text style={styles.summaryTitle}>{item.name}</Text>
+                                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                                <LeftContent />
+                                                <Text style={styles.subtitle}>{item.time}</Text>
+                                            </View>
                                         </View>
-                                    </View>
-                                    <Card.Content>
-                                        <Progress.Circle
-                                            progress={item.value}
-                                            size={120}
-                                            showsText={true}
-                                            animated={false}
-                                            color={getColour(item.value)}
-                                            thickness={8}/>
-                                    </Card.Content>
+                                        <Card.Content>
+                                            <Progress.Circle
+                                                progress={item.value}
+                                                size={120}
+                                                showsText={true}
+                                                animated={false}
+                                                color={getColour(item.value)}
+                                                thickness={8}/>
+                                        </Card.Content>
                                     </View>
                                 </Card>
                             </TouchableOpacity>
-                        ))}
+                        ) : null)}
+
+                        {
+                            answers.de && answers.dp ?
+                                <View>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>
+                                        {i18n.t('noTherapy')}
+                                    </Text>
+                                </View> : null
+                        }
+
                     </FadeInView>
                 </ScrollView>
                 <View style={{width: "100%",height: 100}}>

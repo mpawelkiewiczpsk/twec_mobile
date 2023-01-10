@@ -103,5 +103,6 @@
     "trost": "Modified Trost scale",
     "ashworth": "Modified Ashworth Scale",
     "summaryTherapy1": "The course of rehabilitation",
-    "summaryTherapy2": "Physiotherapy procedures will be performed in the following order:"
+    "summaryTherapy2": "Physiotherapy procedures will be performed in the following order:",
+    "noTherapy": "No therapy for given data"
 }
