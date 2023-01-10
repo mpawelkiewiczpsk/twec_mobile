@@ -267,7 +267,7 @@ function Summary({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [pickedTherapyId, setPickedTherapyId] = useState(0);
     const [therapyList, setTherapyList] = useState(therapyListPL);
-    const [loadTherapy, setLoadTherapy] = useState(true)
+    const [loadTherapy, setLoadTherapy] = useState(false)
     const showModal = () => setModalVisible(true);
     const hideModal = () => setModalVisible(false);
     const onTherapy = (therapyId) => {
@@ -292,7 +292,6 @@ function Summary({ navigation }) {
 
         if(i18n.locale === 'en') setTherapyList(therapyListEN)
 
-
         therapyTmp = therapyList;
         therapyTmp[0].value = calculateStratificationForPerTherapy('Ekso', patientData(answers)) / 100
         therapyTmp[0].visible = !answers.de
@@ -305,6 +304,15 @@ function Summary({ navigation }) {
 
 
     }, [])
+
+    useEffect(() => {
+
+        if(therapyList[0].value !== 0.1 && therapyList[1].value !== 0.1 && therapyList[2].value !== 0.1){
+            setLoadTherapy(true)
+        }
+
+
+    }, [therapyList])
 
 
 
@@ -323,7 +331,7 @@ function Summary({ navigation }) {
                 <Text style={styles.text}>{i18n.t('summary2')}</Text>
                 </View>
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <FadeInView style={styles.summary}>
+                    {loadTherapy ? <FadeInView style={styles.summary}>
                         {therapyList.map((item, index) => item.visible ? (
                             <TouchableOpacity onPress={() => onTherapy(item.id)} key={item.id}>
                                 <Card style={{ marginBottom: 15, backgroundColor: '#fff', opacity: 0.85 }}>
@@ -358,7 +366,7 @@ function Summary({ navigation }) {
                                 </View> : null
                         }
 
-                    </FadeInView>
+                    </FadeInView> : null}
                 </ScrollView>
                 <View style={{width: "100%",height: 100}}>
                     <TouchableOpacity style={styles.bottomBtn}
