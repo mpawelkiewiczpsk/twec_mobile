@@ -329,8 +329,8 @@ function Summary({ navigation }) {
 
 
     const backToHome = () => {
-        // removeAllAnswers();
-        navigation.replace('Q15')
+        removeAllAnswers();
+        navigation.replace('Home')
     }
 
     return (
